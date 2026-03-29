@@ -1,66 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SPACESTRY</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+        .grid-item {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
-
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-text">SPACESTRY</div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="content" class="hidden">
-
-<header>
-  <div class="logo">SPACESTRY</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <img src="Akshar Elysium 102 - 01.jpg" alt="">
-  <div class="hero-text">
-    <h1>Designing spaces that breathe.</h1>
-  </div>
-</section>
-
-<!-- FEATURED PROJECTS -->
-<section class="featured">
-  <div class="project">
-    <img src="Akshar Elysium 102 - 02.jpg">
-    <div class="project-info">
-      <h2>Project One</h2>
-      <p>Minimalist workspace with Scandinavian tones.</p>
+    <div class="grid-container">
+        <div class="grid-item"><img src="Akshar Elysium 102 - 01.jpg" alt="Akshar Elysium 102 - 01"></div>
+        <div class="grid-item"><img src="Akshar Elysium 102 - 02.jpg" alt="Akshar Elysium 102 - 02"></div>
+        <div class="grid-item"><img src="Akshar Elysium 102 - 03.jpg" alt="Akshar Elysium 102 - 03"></div>
+        <div class="grid-item"><img src="Akshar Elysium 102 - 04.jpg" alt="Akshar Elysium 102 - 04"></div>
+        <div class="grid-item"><img src="Akshar Elysium 102 - 05.jpg" alt="Akshar Elysium 102 - 05"></div>
+        <div class="grid-item"><img src="Akshar Elysium 102 - 06.jpg" alt="Akshar Elysium 102 - 06"></div>
+        <div class="grid-item"><img src="GD - PK - 03.JPG" alt="GD - PK - 03"></div>
+        <div class="grid-item"><img src="GD - PK - 06.JPG" alt="GD - PK - 06"></div>
     </div>
-  </div>
-
-  <div class="project">
-    <img src="Akshar Elysium 102 - 03.jpg">
-    <div class="project-info">
-      <h2>Project Two</h2>
-      <p>Warm textures with layered lighting.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GRID -->
-<section class="grid">
-  <img src="Akshar Elysium 102 - 04.jpg">
-  <img src="Akshar Elysium 102 - 05.jpg">
-  <img src="Akshar Elysium 102 - 06.jpg">
-  <img src="GD - PK - 03.JPG">
-</section>
-
-</div>
-
-<script src="script.js"></script>
 </body>
 </html>
