@@ -5,5 +5,5 @@ window.onload = () => {
       document.getElementById("loader").style.display = "none";
       document.getElementById("content").classList.remove("hidden");
     }, 600);
-  }, 1800);
+  }, 2000);
 };
