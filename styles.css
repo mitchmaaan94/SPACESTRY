@@ -196,6 +196,31 @@ body {
     transform: scale(1.05);
 }
 
+/* ===== WATERMARK OVERLAY (Gallery + Homepage) ===== */
+
+/* Applies to both grid items and project cards */
+.grid-item,
+.project-card {
+  position: relative;
+}
+
+.grid-item .watermark,
+.project-card .watermark {
+  position: absolute;
+  inset: 0;
+  background: url("logo-text.png") center center no-repeat;
+  background-size: 60%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Hover effect */
+.grid-item:hover .watermark,
+.project-card:hover .watermark {
+  opacity: 0.9; /* premium feel */
+}
+
 /* Watermark overlay */
 .grid-item {
   position: relative;
