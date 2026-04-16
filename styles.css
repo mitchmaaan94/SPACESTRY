@@ -336,8 +336,8 @@ body {
 }
 
 /* Snap scrolling container */
-html, body {
-  scroll-snap-type: y mandatory;
+html {
+  scroll-behavior: smooth;
 }
 
 }
