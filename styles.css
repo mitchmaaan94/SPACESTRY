@@ -152,6 +152,22 @@ body {
     z-index: 1;
 }
 
+.projects-header {
+  height: 60vh; /* shorter than hero */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 40px;
+  background: #f9f9f9;
+}
+
+.projects-header h1 {
+  font-size: 48px;
+  font-weight: 300;
+  color: #1F4C3E;
+  letter-spacing: 4px;
+}
+
 /* ===== MASONRY GALLERY (for project subpages) ===== */
 .gallery-container {
   padding: 40px 20px;
