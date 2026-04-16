@@ -200,12 +200,12 @@ body {
 
 /* ===== WATERMARK OVERLAY (Gallery + Homepage) ===== */
 .grid-item,
-.project-card {
+.hero-image {
   position: relative;
 }
 
 .grid-item .watermark,
-.project-card .watermark {
+.hero-image .watermark {
   position: absolute;
   inset: 0;
   background: url("logo-text.png") center center no-repeat;
@@ -216,7 +216,7 @@ body {
 }
 
 .grid-item:hover .watermark,
-.project-card:hover .watermark {
+.hero-image:hover .watermark {
   opacity: 0.9; /* premium feel */
 }
 
