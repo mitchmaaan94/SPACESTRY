@@ -220,6 +220,34 @@ body {
   opacity: 0.9; /* premium feel */
 }
 
+.project-overlay {
+  position: absolute;
+  top: 30px;        /* distance from top */
+  left: 40px;       /* distance from left */
+  background: none; /* remove dark overlay background */
+  opacity: 1;       /* always visible */
+}
+
+.project-overlay h2 {
+  color: #D4C2A0;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 28px;
+  position: relative;
+}
+
+.project-overlay h2::after {
+  content: "→";
+  margin-left: 10px;
+  font-size: 28px;
+  color: #D4C2A0;
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover .project-overlay h2::after {
+  transform: translateX(5px);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
   .grid-container { column-count: 3; }
