@@ -298,6 +298,25 @@ body {
     opacity: 0;
     transition: opacity 0.4s ease;
 }
+    
+/* Watermark overlay for homepage project cards */
+.project-card {
+  position: relative;
+}
+
+.project-card .watermark {
+  position: absolute;
+  inset: 0;
+  background: url("logo-text.png") center center no-repeat;
+  background-size: 60%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.project-card:hover .watermark {
+  opacity: 0.9;
+}
 
 .project-card:hover .project-overlay {
     opacity: 1;
