@@ -369,4 +369,56 @@ body {
     letter-spacing: 3px;
     font-size: 28px;
 }
+/* ===== HERO SCROLL REVEAL ===== */
+.hero {
+  height: 100vh;                 /* full screen section */
+  scroll-snap-align: start;      /* snap to each hero */
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(20%);    /* start slightly shifted */
+  animation: parallaxMove linear both;
+  animation-timeline: scroll(root);   /* tie to scroll */
+  animation-range: entry 0% exit 100%;
+}
+
+.hero-image .watermark {
+  position: absolute;
+  inset: 0;
+  background: url("logo-text.png") center center no-repeat;
+  background-size: 40%;
+  opacity: 0;
+  animation: watermarkFade linear both;
+  animation-timeline: scroll(root);
+  animation-range: entry 0% exit 100%;
+}
+
+/* Keyframes */
+@keyframes parallaxMove {
+  from { transform: translateY(20%); }
+  to   { transform: translateY(-20%); }
+}
+
+@keyframes watermarkFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 0.9; transform: translateY(-30px); }
+}
+
+/* Snap scrolling container */
+html, body {
+  scroll-snap-type: y mandatory;
+}
+
 }
