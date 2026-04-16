@@ -239,10 +239,14 @@ body {
 /* ===== PROJECT NAME OVERLAY ===== */
 .project-overlay {
   position: absolute;
-  top: 30px;        /* change to bottom:30px if you prefer */
+  top: 30px;
   left: 40px;
-  background: none;
-  opacity: 1;       /* always visible */
+  opacity: 0; /* hidden until hover */
+  transition: opacity 0.4s ease;
+}
+
+.hero-image:hover .project-overlay {
+  opacity: 1;
 }
 
 .project-overlay h2 {
