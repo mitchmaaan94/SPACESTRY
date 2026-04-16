@@ -152,53 +152,115 @@ body {
     z-index: 1;
 }
 
-/* ===== GALLERY ===== */
+/* ===== MASONRY GALLERY ===== */
 .gallery-container {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    width: 95%;
-    max-width: 1400px;
-    margin: 0 auto;
+  column-count: 4;       /* number of masonry columns */
+  column-gap: 25px;      /* spacing between columns */
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .grid-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(31, 76, 62, 0.15);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    background-color: #fff;
-    border: 1px solid rgba(212, 194, 160, 0.1);
+  display: inline-block; /* allows items to flow into columns */
+  margin-bottom: 25px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(31, 76, 62, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid rgba(212, 194, 160, 0.1);
 }
 
 .grid-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(31, 76, 62, 0.25);
-    border-color: rgba(212, 194, 160, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(31, 76, 62, 0.25);
+  border-color: rgba(212, 194, 160, 0.2);
 }
 
 .grid-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: auto;   /* natural scaling for landscape vs portrait */
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .grid-item:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+/* ===== PROJECT GRID (Homepage) ===== */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay with project name + arrow */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay h2 {
+  color: #D4C2A0;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 24px;
+  position: relative;
+}
+
+.project-overlay h2::after {
+  content: "→";
+  margin-left: 10px;
+  font-size: 24px;
+  color: #D4C2A0;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-overlay h2::after {
+  transform: translateX(5px);
 }
 
 /* ===== WATERMARK OVERLAY (Gallery + Homepage) ===== */
-
-/* Applies to both grid items and project cards */
 .grid-item,
 .project-card {
   position: relative;
@@ -215,76 +277,30 @@ body {
   pointer-events: none;
 }
 
-/* Hover effect */
 .grid-item:hover .watermark,
 .project-card:hover .watermark {
   opacity: 0.9; /* premium feel */
 }
 
-/* Watermark overlay */
-.grid-item {
-  position: relative;
-}
-
-.watermark {
-  position: absolute;
-  inset: 0;
-  background: url("logo-text.png") center center no-repeat;
-  background-size: 60%;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.grid-item:hover .watermark {
-  opacity: 0.9; /* premium feel */
-}
-
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
-    .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
+  .grid-container { column-count: 3; }
 }
 
 @media (max-width: 768px) {
-    .header-logo {
-        max-width: 250px;
-    }
-
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
+  .header-logo { max-width: 250px; }
+  .grid-container { column-count: 2; }
 }
 
 @media (max-width: 480px) {
-    .header {
-        padding: 40px 20px 30px;
-    }
+  .header { padding: 40px 20px 30px; }
+  .header-logo { max-width: 200px; }
+  .tagline { font-size: 14px; }
+  .grid-container { column-count: 1; }
+  .loader-logo { width: 100px; height: 100px; }
+  .loading-text { font-size: 18px; }
+}
 
-    .header-logo {
-        max-width: 200px;
-    }
-
-    .tagline {
-        font-size: 14px;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .loader-logo {
-        width: 100px;
-        height: 100px;
-    }
-
-    .loading-text {
-        font-size: 18px;
-    }
     /* ===== PROJECT GRID ===== */
 
 .projects-container {
