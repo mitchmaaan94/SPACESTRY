@@ -162,9 +162,9 @@ body {
   height: 30vh; /* shorter than hero */
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 40px;
-  background: #f9f9f9;
+  justify-content: left;
+  padding-bottom: 10px;
+  background: #FAF0E6;
 }
 
 .projects-header h1 {
