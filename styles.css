@@ -174,10 +174,6 @@ body {
   letter-spacing: 4px;
 }
 
-#content {
-  padding-top: 80px; /* adjust to your header height */
-}
-
 /* ===== MASONRY GALLERY (for project subpages) ===== */
 .gallery-container {
   padding: 40px 20px;
