@@ -232,7 +232,7 @@ body {
 
 .grid-item .watermark,
 .hero-image .watermark {
-  position: absolute;
+  position: relative;
   inset: 0;
   background: url("logo-text.png") center center no-repeat;
   background-size: 40%;
