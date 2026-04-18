@@ -228,7 +228,7 @@ body {
 
 .grid-item .watermark,
 .hero-image .watermark {
-  position: relative;
+  position: absolute;
   inset: 0;
   background: url("logo-text.png") center center no-repeat;
   background-size: 40%;
