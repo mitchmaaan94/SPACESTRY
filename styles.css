@@ -1,16 +1,26 @@
+/* 1. TYPOGRAPHY & IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+html {
+    scroll-behavior: smooth;
 }
 
-/* ===== LOADING SCREEN ===== */
+body {
+    font-family: 'Lora', serif;
+    background-color: #f7f7ed; /* Soft architectural off-white */
+    color: #1F4C3E;
+    line-height: 1.6;
+    font-size: 18px;
+    padding-top: 240px; /* Offset for the large fixed header */
+}
+
+/* 2. LOADING SCREEN (Preserved Brand Identity) */
 .loader {
     position: fixed;
     top: 0;
@@ -24,28 +34,14 @@ body {
     z-index: 9999;
     opacity: 1;
     transition: opacity 0.6s ease-out;
-    overflow: hidden;
-}
-
-.loader::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.3;
-    mix-blend-mode: overlay;
-    pointer-events: none;
 }
 
 .loader-content {
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
 .loader-logo {
     width: 150px;
-    height: 150px;
     margin-bottom: 30px;
     animation: fadeInLogo 1s ease-in-out;
 }
@@ -61,185 +57,169 @@ body {
     border: 4px solid rgba(212, 194, 160, 0.2);
     border-top: 4px solid #D4C2A0;
     border-radius: 50%;
-    margin: 0 auto 20px;
+    margin: 0 auto;
     animation: spin 1.5s linear infinite;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-.loading-text {
-    color: #D4C2A0;
-    font-size: 24px;
-    font-weight: 300;
-    letter-spacing: 3px;
-}
+.hidden { display: none; }
 
-.hidden {
-    display: none;
-}
-
-/* ===== HEADER (Enlarged 25%) ===== */
+/* 3. HEADER (Premium Fixed State) */
 .header {
     text-align: center;
-    padding: 75px 25px 50px; /* 25% Increase */
+    padding: 60px 25px 40px;
     background: linear-gradient(135deg, #1F4C3E 0%, #2A6653 100%);
-    border-bottom: 2px solid rgba(212, 194, 160, 0.2);
+    border-bottom: 1px solid rgba(212, 194, 160, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    transition: opacity 0.8s ease;
-    overflow: hidden;
 }
 
 .header-logo {
-    max-width: 375px; /* 25% Increase from 300px */
-    height: auto;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
+    max-width: 350px;
+    margin-bottom: 15px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .tagline {
-    font-size: 20px; /* 25% Increase from 16px */
+    font-size: 14px;
+    text-transform: uppercase;
     color: #D4C2A0;
-    font-weight: 300;
-    letter-spacing: 1.25px;
-    opacity: 0.85;
-    position: relative;
-    z-index: 1;
+    letter-spacing: 3px;
+    font-weight: 400;
 }
 
-/* ===== HERO SECTION (Homepage) ===== */
-.hero {
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+/* 4. MAIN PROJECT LAYOUT */
+.main-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 5%;
 }
 
-.hero-image {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
+.projects-category-header {
+    margin-bottom: 100px;
 }
 
-.hero-image img {
-    width: 100%;
-    height: 120%; /* Extra height to allow for parallax travel */
-    object-fit: cover;
+.projects-category-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #1F4C3E;
+    text-align: center;
+}
+
+/* 5. PROJECT SECTION & TYPOGRAPHY */
+.project-section {
+    margin-bottom: 150px;
+}
+
+.section-meta {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1F4C3E;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.project-title-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 15px;
+}
+
+.project-title-sub::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
+    width: 50px;
+    height: 1px;
+    background-color: #1F4C3E;
 }
 
-/* ===== WATERMARK & OVERLAYS ===== */
-.watermark {
+/* 6. THE WINDOW FRAME (The SCJ Effect) */
+.window-frame {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 85vh; /* Monumental height */
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.window-bg {
     position: absolute;
-    inset: 0;
-    background: url("logo-text.png") center center no-repeat;
-    background-size: 40%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates the window reveal */
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.window-frame:hover .window-bg {
+    transform: scale(1.05);
+}
+
+/* 7. OVERLAYS & FLOATING WATERMARK */
+.project-overlay {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: #D4C2A0; /* Gold */
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s ease;
+    z-index: 10;
+}
+
+.window-frame:hover .project-overlay {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.floating-watermark {
+    position: absolute;
+    bottom: -150px; /* Starting position for GSAP parallax */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25%;
+    max-width: 350px;
     opacity: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 5;
     transition: opacity 0.8s ease;
 }
 
-.project-overlay {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(30px); /* SCJ Architects style slide-in */
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.window-frame:hover .floating-watermark {
+    opacity: 0.5; /* Subtle gold glow on hover */
 }
 
-/* Triggered by JS IntersectionObserver */
-.hero-image .project-overlay[style*="opacity: 1"] {
-    transform: translateY(0);
-}
-
-.project-overlay h2 {
-    color: #D4C2A0;
-    font-weight: 300;
-    letter-spacing: 3px;
-    font-size: 35px; /* 25% Increase from 28px */
-}
-
-/* ===== MASONRY GALLERY ===== */
-.projects-header {
-    margin-top: 150px; 
-    height: 30vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 0 5% 20px;
-    background: #f7f7ed;
-}
-
-.projects-header h1 {
-    font-size: 60px; /* Increased for impact */
-    font-weight: 300;
-    color: #1F4C3E;
-    letter-spacing: 4px;
-}
-
-.gallery-container {
-    padding: 60px 5%;
-    background-color: #f9f9f9;
-}
-
-.grid-container {
-    column-count: 4;
-    column-gap: 30px;
-    max-width: 1600px;
-    margin: 0 auto;
-}
-
-.grid-item {
-    display: inline-block;
-    margin-bottom: 30px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px; /* More architectural/sharp compared to 12px */
-    transition: all 0.4s ease;
-    cursor: pointer;
-    background-color: #fff;
-}
-
-.grid-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.6s ease;
-}
-
-.grid-item:hover img {
-    transform: scale(1.03);
-}
-
-/* ===== RESPONSIVE ===== */
+/* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
-    .grid-container { column-count: 3; }
+    .projects-category-header h1 { font-size: 48px; }
+    .project-title-sub { font-size: 36px; }
+    .window-frame { height: 60vh; }
 }
 
 @media (max-width: 768px) {
-    .header-logo { max-width: 280px; }
-    .grid-container { column-count: 2; }
-}
-
-@media (max-width: 480px) {
-    .header { padding: 30px 20px; }
-    .header-logo { max-width: 220px; }
-    .grid-container { column-count: 1; }
-}
-
-html {
-    scroll-behavior: smooth;
+    body { padding-top: 180px; }
+    .header-logo { max-width: 250px; }
+    .tagline { font-size: 12px; }
+    .floating-watermark { width: 50%; }
 }
