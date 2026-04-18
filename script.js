@@ -1,31 +1,54 @@
 window.onload = () => {
+  // 1. Register GSAP Plugins
+  gsap.registerPlugin(ScrollTrigger);
+
   setTimeout(() => {
     document.getElementById("loader").style.opacity = "0";
+    
     setTimeout(() => {
       document.getElementById("loader").style.display = "none";
       document.getElementById("content").classList.remove("hidden");
-      // === Scroll Reveal Logic ===
-      const heroes = document.querySelectorAll(".hero-image");
-      const header = document.querySelector(".header");
       
+      const header = document.querySelector(".header");
+      const heroes = document.querySelectorAll(".hero-image");
+
+      // === NEW: GSAP Parallax Logic ===
+      // This handles the smooth movement of the background images
+      heroes.forEach((hero) => {
+        const img = hero.querySelector("img");
+        if (img) {
+          gsap.to(img, {
+            yPercent: 20, // Moves the image slightly to create parallax
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top bottom", 
+              end: "bottom top",
+              scrub: true
+            }
+          });
+        }
+      });
+
+      // === Your Existing Scroll Reveal (Overlays) ===
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           const watermark = entry.target.querySelector(".watermark");
           const overlay = entry.target.querySelector(".project-overlay");
 
           if (entry.isIntersecting) {
-            if (watermark) watermark.style.opacity = "0.3"; // fade in watermark
-            if (overlay) overlay.style.opacity = "1";       // fade in project name
+            if (watermark) watermark.style.opacity = "0.3";
+            if (overlay) overlay.style.opacity = "1";
           } else {
-            if (watermark) watermark.style.opacity = "0";   // fade out watermark
-            if (overlay) overlay.style.opacity = "0";       // fade out project name
+            if (watermark) watermark.style.opacity = "0";
+            if (overlay) overlay.style.opacity = "0";
           }
         });
       }, { threshold: 0.3 });
 
       heroes.forEach(hero => observer.observe(hero));
-      // === End Scroll Reveal Logic ===
-       // === Header fade after 25% scroll ===
+
+      // === Your Existing Header fade logic ===
       window.addEventListener("scroll", () => {
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
@@ -35,6 +58,7 @@ window.onload = () => {
           header.style.opacity = "1";
         }
       });
+
     }, 600);
   }, 2000);
 };
