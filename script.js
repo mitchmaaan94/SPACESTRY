@@ -11,6 +11,7 @@ function initWatermarkParallax() {
   frames.forEach((frame) => {
     const watermark = frame.querySelector(".floating-watermark");
     if (!watermark) return;
+    if (window.getComputedStyle(watermark).position === "sticky") return;
 
     gsap.fromTo(
       watermark,

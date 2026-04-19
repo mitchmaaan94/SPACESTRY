@@ -136,6 +136,13 @@ p {
     text-align: center;
 }
 
+.projects-section-title {
+    text-align: left;
+    font-size: clamp(2.15rem, 4.8vw, 3.25rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
 .projects-header h1,
 .projects-category-header h1 {
     text-transform: uppercase;
@@ -179,11 +186,20 @@ p {
 }
 
 /* 6. THE WINDOW FRAME (The SCJ Effect) */
+.gallery-wrapper {
+    position: relative;
+}
+
+.gallery-container {
+    position: relative;
+    will-change: transform;
+}
+
 .window-frame {
     display: block;
     position: relative;
     width: 100%;
-    height: 85vh; /* Monumental height */
+    height: 100vh;
     min-height: 420px;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -193,14 +209,10 @@ p {
 }
 
 .window-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Creates the window reveal */
+    height: 100vh;
+    object-fit: cover;
+    display: block;
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -244,15 +256,18 @@ p {
 }
 
 .floating-watermark {
-    position: absolute;
-    bottom: -110px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(40%, 360px);
-    max-width: 350px;
-    opacity: 0.26;
+    position: sticky;
+    bottom: 5%;
+    right: 5%;
+    margin-right: 5%;
+    margin-top: -180px;
+    margin-left: auto;
+    width: 300px;
+    max-width: min(44vw, 300px);
+    opacity: 0.5;
+    mix-blend-mode: difference;
     pointer-events: none;
-    z-index: 5;
+    z-index: 999;
     transition: opacity 0.35s ease;
 }
 
@@ -266,8 +281,8 @@ p {
 @media (max-width: 1024px) {
     body { padding-top: 212px; }
     .main-wrapper { padding: 0 6%; }
-    .window-frame { height: 68vh; }
-    .floating-watermark { width: min(52%, 320px); }
+    .window-frame { height: 84vh; }
+    .window-bg { height: 84vh; }
 }
 
 @media (max-width: 768px) {
@@ -277,15 +292,14 @@ p {
     .main-wrapper { padding: 0 4.5%; }
     .project-section { gap: 18px; }
     .window-frame {
-        height: 56vh;
+        height: 68vh;
         min-height: 320px;
     }
-    .window-bg {
-        background-attachment: scroll;
-    }
+    .window-bg { height: 68vh; }
     .floating-watermark {
-        width: min(58%, 260px);
-        bottom: -72px;
+        width: 150px;
+        max-width: 40vw;
+        margin-top: -110px;
     }
 }
 
@@ -294,9 +308,10 @@ p {
     .header { padding: 44px 18px 30px; }
     .project-title-sub { margin-bottom: 18px; }
     .window-frame {
-        height: 52vh;
+        height: 60vh;
         min-height: 280px;
     }
+    .window-bg { height: 60vh; }
     .project-overlay-text {
         padding: 10px 16px;
         letter-spacing: 0.14em;
