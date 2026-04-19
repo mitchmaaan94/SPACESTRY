@@ -16,7 +16,7 @@ body {
     color: #1F4C3E;
     line-height: 1.6;
     font-size: 16px;
-    padding-top: 240px; /* Offset for the large fixed header */
+    padding-top: 72px; /* Offset for slim sticky navbar */
 }
 
 h1,
@@ -95,32 +95,92 @@ p {
 
 .hidden { display: none; }
 
-/* 3. HEADER (Premium Fixed State) */
-.header {
-    text-align: center;
-    padding: 60px 25px 40px;
-    background: linear-gradient(135deg, #1F4C3E 0%, #2A6653 100%);
-    border-bottom: 1px solid rgba(212, 194, 160, 0.1);
+/* 3. SLIM STICKY NAVBAR */
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 70px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: rgba(247, 247, 237, 0.96);
+    border-bottom: 1px solid transparent;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.header-logo {
-    max-width: 350px;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+.navbar.is-scrolled {
+    box-shadow: 0 8px 20px rgba(31, 76, 62, 0.08);
+    border-bottom-color: rgba(31, 76, 62, 0.1);
+    background: rgba(247, 247, 237, 0.98);
 }
 
-.tagline {
-    font-size: 14px;
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: clamp(150px, 15vw, 180px);
+    max-width: 100%;
+    display: block;
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(20px, 2.2vw, 34px);
+}
+
+.navbar-link {
     font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    color: #D4C2A0;
-    letter-spacing: 3px;
+    letter-spacing: 0.08em;
     font-weight: 500;
+    color: #1F4C3E;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.navbar-link:hover,
+.navbar-link:focus-visible {
+    opacity: 0.75;
+}
+
+.navbar-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navbar-toggle-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #1F4C3E;
+    margin: 3px 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar.is-open .navbar-toggle-line:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.navbar.is-open .navbar-toggle-line:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar.is-open .navbar-toggle-line:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
 }
 
 /* 4. MAIN PROJECT LAYOUT */
@@ -278,16 +338,38 @@ p {
 
 /* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
-    body { padding-top: 212px; }
+    body { padding-top: 72px; }
     .main-wrapper { padding: 0 6%; }
     .window-frame { height: 84vh; }
     .window-bg { height: 84vh; }
 }
 
 @media (max-width: 768px) {
-    body { padding-top: 180px; }
-    .header-logo { max-width: 250px; }
-    .tagline { font-size: 12px; }
+    body { padding-top: 72px; }
+    .navbar {
+        height: 70px;
+        padding: 0 4.5%;
+    }
+    .navbar-toggle {
+        display: inline-flex;
+    }
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px 4.5% 20px;
+        background: rgba(247, 247, 237, 0.98);
+        border-top: 1px solid rgba(31, 76, 62, 0.08);
+        border-bottom: 1px solid rgba(31, 76, 62, 0.08);
+    }
+    .navbar.is-open .navbar-menu {
+        display: flex;
+    }
     .main-wrapper { padding: 0 4.5%; }
     .project-section { gap: 18px; }
     .window-frame {
@@ -303,8 +385,7 @@ p {
 }
 
 @media (max-width: 480px) {
-    body { padding-top: 164px; }
-    .header { padding: 44px 18px 30px; }
+    body { padding-top: 72px; }
     .project-title-sub { margin-bottom: 18px; }
     .window-frame {
         height: 60vh;
@@ -315,4 +396,38 @@ p {
         padding: 10px 16px;
         letter-spacing: 0.14em;
     }
+}
+
+/* 9. FOOTER */
+.site-footer {
+    margin-top: 56px;
+    padding: 36px 5%;
+    background: #1F4C3E;
+    color: #f7f7ed;
+    text-align: center;
+}
+
+.site-footer-logo {
+    width: 150px;
+    max-width: 100%;
+    margin: 0 auto 14px;
+    display: block;
+}
+
+.site-footer p {
+    color: #f7f7ed;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 4px 0;
+}
+
+.site-footer .footer-accent {
+    color: #D4C2A0;
+}
+
+/* 10. CONTACT PAGE */
+.contact-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 6% 5% 0;
 }
