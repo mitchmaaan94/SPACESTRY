@@ -1,64 +1,90 @@
+const WATERMARK_PARALLAX_OFFSET = 22; // px: subtle 44px total travel to keep watermark movement understated
+
+function hasGsapAndScrollTrigger() {
+  return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
+}
+
+function initWatermarkParallax() {
+  if (!hasGsapAndScrollTrigger()) return;
+  const frames = document.querySelectorAll(".window-frame");
+
+  frames.forEach((frame) => {
+    const watermark = frame.querySelector(".floating-watermark");
+    if (!watermark) return;
+
+    gsap.fromTo(
+      watermark,
+      { y: WATERMARK_PARALLAX_OFFSET },
+      {
+        y: -WATERMARK_PARALLAX_OFFSET,
+        ease: "none",
+        scrollTrigger: {
+          trigger: frame,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      }
+    );
+  });
+}
+
+function initTouchOverlays() {
+  const noHoverQuery = window.matchMedia("(hover: none)");
+  const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
+  const supportsTouch = noHoverQuery.matches || coarsePointerQuery.matches;
+  if (!supportsTouch) return;
+
+  const frames = Array.from(document.querySelectorAll(".window-frame"));
+  if (!frames.length) return;
+
+  const clearActive = (exceptFrame) => {
+    frames.forEach((frame) => {
+      if (frame !== exceptFrame) frame.classList.remove("is-active");
+    });
+  };
+
+  frames.forEach((frame) => {
+    frame.addEventListener("click", (event) => {
+      if (!frame.classList.contains("is-active")) {
+        event.preventDefault();
+        clearActive(frame);
+        frame.classList.add("is-active");
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const clickedFrame = event.target.closest(".window-frame");
+    if (!clickedFrame) clearActive(null);
+  });
+}
+
 window.onload = () => {
-  // 1. Register GSAP Plugins
-  gsap.registerPlugin(ScrollTrigger);
+  if (hasGsapAndScrollTrigger()) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
 
   setTimeout(() => {
-    document.getElementById("loader").style.opacity = "0";
-    
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
+    const header = document.querySelector(".header");
+
+    if (loader) loader.style.opacity = "0";
+
     setTimeout(() => {
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("content").classList.remove("hidden");
-      
-      const header = document.querySelector(".header");
-      const heroes = document.querySelectorAll(".hero-image");
+      if (loader) loader.style.display = "none";
+      if (content) content.classList.remove("hidden");
 
-      // === NEW: GSAP Parallax Logic ===
-      // This handles the smooth movement of the background images
-      heroes.forEach((hero) => {
-        const img = hero.querySelector("img");
-        if (img) {
-          gsap.to(img, {
-            yPercent: 20, // Moves the image slightly to create parallax
-            ease: "none",
-            scrollTrigger: {
-              trigger: hero,
-              start: "top bottom", 
-              end: "bottom top",
-              scrub: true
-            }
-          });
-        }
-      });
+      initWatermarkParallax();
+      initTouchOverlays();
 
-      // === Your Existing Scroll Reveal (Overlays) ===
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const watermark = entry.target.querySelector(".watermark");
-          const overlay = entry.target.querySelector(".project-overlay");
-
-          if (entry.isIntersecting) {
-            if (watermark) watermark.style.opacity = "0.3";
-            if (overlay) overlay.style.opacity = "1";
-          } else {
-            if (watermark) watermark.style.opacity = "0";
-            if (overlay) overlay.style.opacity = "0";
-          }
-        });
-      }, { threshold: 0.3 });
-
-      heroes.forEach(hero => observer.observe(hero));
-
-      // === Your Existing Header fade logic ===
       window.addEventListener("scroll", () => {
+        if (!header) return;
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
-        if (scrollY > viewportHeight * 0.25) {
-          header.style.opacity = "0";
-        } else {
-          header.style.opacity = "1";
-        }
+        header.style.opacity = scrollY > viewportHeight * 0.25 ? "0" : "1";
       });
-
     }, 600);
   }, 2000);
 };

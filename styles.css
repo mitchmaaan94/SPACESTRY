@@ -1,5 +1,4 @@
-/* 1. TYPOGRAPHY & IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap');
+/* 1. TYPOGRAPHY (Imported via Google Fonts in index.html) */
 
 * {
     margin: 0;
@@ -12,12 +11,43 @@ html {
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f7f7ed; /* Soft architectural off-white */
     color: #1F4C3E;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 16px;
     padding-top: 240px; /* Offset for the large fixed header */
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #1F4C3E;
+}
+
+h1 {
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    line-height: 1.05;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    line-height: 1.15;
+}
+
+h3 {
+    font-size: clamp(1.35rem, 2.6vw, 2.35rem);
+    line-height: 1.2;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
 }
 
 /* 2. LOADING SCREEN (Preserved Brand Identity) */
@@ -86,10 +116,11 @@ body {
 
 .tagline {
     font-size: 14px;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
     color: #D4C2A0;
     letter-spacing: 3px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 /* 4. MAIN PROJECT LAYOUT */
@@ -99,22 +130,24 @@ body {
     padding: 0 5%;
 }
 
+.projects-header,
 .projects-category-header {
     margin-bottom: 100px;
+    text-align: center;
 }
 
+.projects-header h1,
 .projects-category-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: #1F4C3E;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 /* 5. PROJECT SECTION & TYPOGRAPHY */
 .project-section {
-    margin-bottom: 150px;
+    margin-bottom: clamp(72px, 11vw, 150px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
 }
 
 .section-meta {
@@ -127,9 +160,9 @@ body {
 }
 
 .project-title-sub {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    font-weight: 600;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
     margin-bottom: 30px;
     position: relative;
     padding-top: 15px;
@@ -151,10 +184,12 @@ body {
     position: relative;
     width: 100%;
     height: 85vh; /* Monumental height */
+    min-height: 420px;
     overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.05);
     text-decoration: none;
     cursor: pointer;
+    isolation: isolate; /* keeps watermark/overlay stacking contained per project card */
 }
 
 .window-bg {
@@ -176,50 +211,94 @@ body {
 /* 7. OVERLAYS & FLOATING WATERMARK */
 .project-overlay {
     position: absolute;
-    top: 40px;
-    left: 40px;
-    color: #D4C2A0; /* Gold */
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(24, 59, 48, 0.42);
+    color: #f7f7ed;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.76rem, 1.15vw, 0.95rem);
     font-weight: 500;
     opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.6s ease;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
     z-index: 10;
+    pointer-events: none;
 }
 
-.window-frame:hover .project-overlay {
+.project-overlay-text {
+    border: 1px solid rgba(247, 247, 237, 0.75);
+    padding: 12px 22px;
+    background: rgba(16, 40, 33, 0.18);
+    backdrop-filter: blur(2px);
+}
+
+.window-frame:hover .project-overlay,
+.window-frame:focus-visible .project-overlay,
+.window-frame.is-active .project-overlay {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
 .floating-watermark {
     position: absolute;
-    bottom: -150px; /* Starting position for GSAP parallax */
+    bottom: -110px;
     left: 50%;
     transform: translateX(-50%);
-    width: 25%;
+    width: min(40%, 360px);
     max-width: 350px;
-    opacity: 0;
+    opacity: 0.26;
     pointer-events: none;
     z-index: 5;
-    transition: opacity 0.8s ease;
+    transition: opacity 0.35s ease;
 }
 
-.window-frame:hover .floating-watermark {
-    opacity: 0.5; /* Subtle gold glow on hover */
+.window-frame:hover .floating-watermark,
+.window-frame:focus-visible .floating-watermark,
+.window-frame.is-active .floating-watermark {
+    opacity: 0.42;
 }
 
 /* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
-    .projects-category-header h1 { font-size: 48px; }
-    .project-title-sub { font-size: 36px; }
-    .window-frame { height: 60vh; }
+    body { padding-top: 212px; }
+    .main-wrapper { padding: 0 6%; }
+    .window-frame { height: 68vh; }
+    .floating-watermark { width: min(52%, 320px); }
 }
 
 @media (max-width: 768px) {
     body { padding-top: 180px; }
     .header-logo { max-width: 250px; }
     .tagline { font-size: 12px; }
-    .floating-watermark { width: 50%; }
+    .main-wrapper { padding: 0 4.5%; }
+    .project-section { gap: 18px; }
+    .window-frame {
+        height: 56vh;
+        min-height: 320px;
+    }
+    .window-bg {
+        background-attachment: scroll;
+    }
+    .floating-watermark {
+        width: min(58%, 260px);
+        bottom: -72px;
+    }
+}
+
+@media (max-width: 480px) {
+    body { padding-top: 164px; }
+    .header { padding: 44px 18px 30px; }
+    .project-title-sub { margin-bottom: 18px; }
+    .window-frame {
+        height: 52vh;
+        min-height: 280px;
+    }
+    .project-overlay-text {
+        padding: 10px 16px;
+        letter-spacing: 0.14em;
+    }
 }
