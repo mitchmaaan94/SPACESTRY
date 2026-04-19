@@ -1,5 +1,11 @@
+const WATERMARK_PARALLAX_OFFSET = 22;
+
+function hasGsapScrollTrigger() {
+  return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
+}
+
 function initWatermarkParallax() {
-  if (typeof window.gsap === "undefined" || typeof window.ScrollTrigger === "undefined") return;
+  if (!hasGsapScrollTrigger()) return;
   const frames = document.querySelectorAll(".window-frame");
 
   frames.forEach((frame) => {
@@ -8,9 +14,9 @@ function initWatermarkParallax() {
 
     gsap.fromTo(
       watermark,
-      { y: 22 },
+      { y: WATERMARK_PARALLAX_OFFSET },
       {
-        y: -22,
+        y: -WATERMARK_PARALLAX_OFFSET,
         ease: "none",
         scrollTrigger: {
           trigger: frame,
@@ -24,7 +30,9 @@ function initWatermarkParallax() {
 }
 
 function initTouchOverlays() {
-  const supportsTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const supportsTouch =
+    window.matchMedia("(hover: none)").matches ||
+    window.matchMedia("(pointer: coarse)").matches;
   if (!supportsTouch) return;
 
   const frames = Array.from(document.querySelectorAll(".window-frame"));
@@ -53,7 +61,7 @@ function initTouchOverlays() {
 }
 
 window.onload = () => {
-  if (typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined") {
+  if (hasGsapScrollTrigger()) {
     gsap.registerPlugin(ScrollTrigger);
   }
 
