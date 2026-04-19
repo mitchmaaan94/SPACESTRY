@@ -13,13 +13,25 @@
   <link rel="icon" type="image/png" href="/logo-rounded.png">
   <link rel="apple-touch-icon" href="/logo-rounded.png">
   <meta name="theme-color" content="#1F4C3E">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
-    <img src="logo-text.png" class="header-logo">
-    <p class="tagline">AYUSH COTSYN | Narol</p>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="navbar-logo-link" aria-label="SPACESTRY Home">
+      <img src="logo-text.png" class="navbar-logo" alt="SPACESTRY">
+    </a>
+    <button class="navbar-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-nav-menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="navbar-menu" id="site-nav-menu">
+      <a href="index.html">Projects</a>
+      <a href="#">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
   <!-- Gallery -->
@@ -61,5 +73,11 @@
       
     </div>
   </div>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <p class="footer-left">© SPACESTRY 2022-26</p>
+      <p class="footer-right">Made with ❤️ by Mitch. Stick around for more ;)</p>
+    </div>
+  </footer>
 </body>
 </html>
