@@ -189,7 +189,7 @@ p {
     border: 1px solid rgba(0, 0, 0, 0.05);
     text-decoration: none;
     cursor: pointer;
-    isolation: isolate;
+    isolation: isolate; /* keeps watermark/overlay stacking contained per project card */
 }
 
 .window-bg {
