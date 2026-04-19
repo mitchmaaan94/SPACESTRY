@@ -61,61 +61,31 @@ function initTouchOverlays() {
   });
 }
 
-function initNavbar() {
-  const navbar = document.querySelector(".navbar");
-  if (!navbar) return;
-
-  const toggle = navbar.querySelector(".navbar-toggle");
-  const menu = navbar.querySelector(".navbar-menu");
-
-  const updateNavbarShadow = () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 8);
-  };
-
-  updateNavbarShadow();
-  window.addEventListener("scroll", updateNavbarShadow);
-
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!navbar.contains(event.target)) {
-      menu.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
-
-function initPageFeatures() {
-  initWatermarkParallax();
-  initTouchOverlays();
-  initNavbar();
-}
-
 window.onload = () => {
   if (hasGsapAndScrollTrigger()) {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  const loader = document.getElementById("loader");
-  const content = document.getElementById("content");
-
-  if (!loader || !content) {
-    initPageFeatures();
-    return;
-  }
-
   setTimeout(() => {
-    loader.style.opacity = "0";
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
+    const header = document.querySelector(".header");
+
+    if (loader) loader.style.opacity = "0";
 
     setTimeout(() => {
-      loader.style.display = "none";
-      content.classList.remove("hidden");
-      initPageFeatures();
+      if (loader) loader.style.display = "none";
+      if (content) content.classList.remove("hidden");
+
+      initWatermarkParallax();
+      initTouchOverlays();
+
+      window.addEventListener("scroll", () => {
+        if (!header) return;
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        header.style.opacity = scrollY > viewportHeight * 0.25 ? "0" : "1";
+      });
     }, 600);
   }, 2000);
 };

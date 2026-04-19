@@ -16,7 +16,7 @@ body {
     color: #1F4C3E;
     line-height: 1.6;
     font-size: 16px;
-    padding-top: 70px; /* Offset for sticky navbar */
+    padding-top: 240px; /* Offset for the large fixed header */
 }
 
 h1,
@@ -95,63 +95,32 @@ p {
 
 .hidden { display: none; }
 
-/* 3. NAVBAR */
-.navbar {
+/* 3. HEADER (Premium Fixed State) */
+.header {
+    text-align: center;
+    padding: 60px 25px 40px;
+    background: linear-gradient(135deg, #1F4C3E 0%, #2A6653 100%);
+    border-bottom: 1px solid rgba(212, 194, 160, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 68px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    background: #f7f7ed;
     z-index: 1000;
-    transition: box-shadow 0.3s ease;
 }
 
-.navbar.scrolled {
-    box-shadow: 0 6px 18px rgba(31, 76, 62, 0.12);
+.header-logo {
+    max-width: 350px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.navbar-logo {
-    width: clamp(150px, 16vw, 180px);
-    display: block;
-}
-
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.navbar-menu a {
-    color: #1F4C3E;
-    text-decoration: none;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
+.tagline {
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
     text-transform: uppercase;
+    color: #D4C2A0;
+    letter-spacing: 3px;
     font-weight: 500;
-}
-
-.navbar-toggle {
-    display: none;
-    border: 0;
-    background: transparent;
-    width: 36px;
-    height: 32px;
-    padding: 0;
-    cursor: pointer;
-}
-
-.navbar-toggle span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: #1F4C3E;
-    margin: 6px 0;
-    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 /* 4. MAIN PROJECT LAYOUT */
@@ -307,64 +276,18 @@ p {
     opacity: 0.42;
 }
 
-/* 8. FOOTER */
-.site-footer {
-    background: #1F4C3E;
-    padding: 24px 5%;
-}
-
-.site-footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-}
-
-.footer-left,
-.footer-right {
-    margin: 0;
-    font-size: 0.95rem;
-}
-
-.footer-left {
-    color: #D4C2A0;
-}
-
-.footer-right {
-    color: #1F4C3E;
-}
-
-/* 9. RESPONSIVE DESIGN */
+/* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
+    body { padding-top: 212px; }
     .main-wrapper { padding: 0 6%; }
     .window-frame { height: 84vh; }
     .window-bg { height: 84vh; }
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 0 4.5%;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-    .navbar-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #f7f7ed;
-        border-top: 1px solid rgba(31, 76, 62, 0.1);
-        box-shadow: 0 6px 18px rgba(31, 76, 62, 0.12);
-        padding: 18px 4.5%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-    }
-    .navbar-menu.is-open {
-        display: flex;
-    }
+    body { padding-top: 180px; }
+    .header-logo { max-width: 250px; }
+    .tagline { font-size: 12px; }
     .main-wrapper { padding: 0 4.5%; }
     .project-section { gap: 18px; }
     .window-frame {
@@ -377,13 +300,11 @@ p {
         max-width: 40vw;
         margin-top: -110px;
     }
-    .site-footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 }
 
 @media (max-width: 480px) {
+    body { padding-top: 164px; }
+    .header { padding: 44px 18px 30px; }
     .project-title-sub { margin-bottom: 18px; }
     .window-frame {
         height: 60vh;
