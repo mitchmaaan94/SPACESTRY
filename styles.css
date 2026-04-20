@@ -177,6 +177,9 @@ p {
     margin-bottom: 30px;
     position: relative;
     padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .project-title-sub::before {
@@ -187,6 +190,20 @@ p {
     width: 50px;
     height: 1px;
     background-color: #1F4C3E;
+}
+
+.project-number {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #1F4C3E;
+    opacity: 0.7;
+}
+
+.project-name {
+    text-align: right;
 }
 
 /* 6. THE WINDOW FRAME (The SCJ Effect) */
