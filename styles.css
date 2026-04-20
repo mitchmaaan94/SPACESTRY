@@ -32,8 +32,8 @@ h1 {
     font-size: clamp(2.4rem, 5.7vw, 5.44rem);
     line-height: 1.03;
     letter-spacing: 0.03em;
-    margin-top: 137px;
-    margin-bottom: 57px;
+    margin-top: clamp(80px, 7vw, 120px);
+    margin-bottom: 0;
 }
 
 h2 {
@@ -136,7 +136,7 @@ p {
 
 .projects-header,
 .projects-category-header {
-    margin-bottom: 100px;
+    margin-bottom: clamp(60px, 5vw, 80px);
     text-align: center;
 }
 
@@ -155,7 +155,7 @@ p {
 
 /* 5. PROJECT SECTION & TYPOGRAPHY */
 .project-section {
-    margin-bottom: clamp(72px, 11vw, 150px);
+    margin-bottom: clamp(80px, 7vw, 120px);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
