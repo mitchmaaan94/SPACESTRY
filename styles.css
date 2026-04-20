@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
     background-color: #f7f7ed; /* Soft architectural off-white */
     color: #1F4C3E;
     line-height: 1.6;
@@ -22,7 +22,7 @@ body {
 h1,
 h2,
 h3 {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
     font-weight: 400;
     letter-spacing: 0.01em;
     color: #1F4C3E;
@@ -47,7 +47,7 @@ h3 {
 }
 
 p {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
     font-size: clamp(0.95rem, 1.35vw, 1.05rem);
     line-height: 1.7;
     letter-spacing: 0.01em;
@@ -120,7 +120,7 @@ p {
 
 .tagline {
     font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
     text-transform: uppercase;
     color: #D4C2A0;
     letter-spacing: 3px;
@@ -171,7 +171,7 @@ p {
 }
 
 .project-title-sub {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
     margin-bottom: 30px;
@@ -235,7 +235,7 @@ p {
     color: #f7f7ed;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
     font-size: clamp(0.76rem, 1.15vw, 0.95rem);
     font-weight: 500;
     opacity: 0;
