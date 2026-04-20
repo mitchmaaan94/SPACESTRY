@@ -195,7 +195,7 @@ p {
 
 .project-number {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-size: clamp(1.8rem, 3.7vw, 2.7rem);
+    font-size: clamp(1.4rem, 2.7vw, 2.3rem);
     font-weight: 350;
     letter-spacing: 0.2em;
     text-transform: uppercase;
