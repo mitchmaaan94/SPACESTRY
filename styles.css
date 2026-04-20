@@ -180,6 +180,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    width: 100%;
 }
 
 .project-title-sub::before {
@@ -203,6 +204,7 @@ p {
 }
 
 .project-name {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
     text-align: right;
 }
 
