@@ -195,12 +195,12 @@ p {
 
 .project-number {
     font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    font-size: 14px;
+    font-size: 21px;
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #1F4C3E;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .project-name {
