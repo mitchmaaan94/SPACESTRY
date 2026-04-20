@@ -109,7 +109,8 @@ p {
 }
 
 .header-logo {
-    max-width: 350px;
+    max-width: 431px;
+    padding-top: 27px;
     margin-bottom: 15px;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
@@ -286,7 +287,7 @@ p {
 
 @media (max-width: 768px) {
     body { padding-top: 180px; }
-    .header-logo { max-width: 250px; }
+    .header-logo { max-width: 308px; }
     .tagline { font-size: 12px; }
     .main-wrapper { padding: 0 4.5%; }
     .project-section { gap: 18px; }
