@@ -16,7 +16,7 @@ body {
     color: #1F4C3E;
     line-height: 1.6;
     font-size: 16px;
-    padding-top: 240px; /* Offset for the large fixed header */
+    padding-top: 267px; /* Offset for the large fixed header (240 + 27 for logo padding) */
 }
 
 h1,
@@ -206,7 +206,7 @@ p {
     border: 1px solid rgba(0, 0, 0, 0.05);
     text-decoration: none;
     cursor: pointer;
-    isolation: isolate; /* keeps watermark/overlay stacking contained per project card */
+    isolation: isolate;
 }
 
 .window-bg {
@@ -279,14 +279,14 @@ p {
 
 /* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
-    body { padding-top: 212px; }
+    body { padding-top: 239px; }
     .main-wrapper { padding: 0 6%; }
     .window-frame { height: 84vh; }
     .window-bg { height: 84vh; }
 }
 
 @media (max-width: 768px) {
-    body { padding-top: 180px; }
+    body { padding-top: 207px; }
     .header-logo { max-width: 308px; }
     .tagline { font-size: 12px; }
     .main-wrapper { padding: 0 4.5%; }
@@ -304,7 +304,7 @@ p {
 }
 
 @media (max-width: 480px) {
-    body { padding-top: 164px; }
+    body { padding-top: 191px; }
     .header { padding: 44px 18px 30px; }
     .project-title-sub { margin-bottom: 18px; }
     .window-frame {
