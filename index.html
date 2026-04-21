@@ -22,7 +22,8 @@
 </head>
 
 <body>
-
+<a id="top" tabindex="-1" aria-hidden="true"></a>
+    
 <!-- Loader -->    
 <div id="loader" class="loader">
     <div class="loader-content">
@@ -135,5 +136,26 @@
     </div>
 </main>
 </div>
+<!-- Footer -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <small class="site-footer__copyright">© 2026 SPACESTRY. All rights reserved.</small>
+
+    <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll-to-top for the footer link
+  (function () {
+    const topLink = document.querySelector('.site-footer__top');
+    if (!topLink) return;
+
+    topLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
 </body>
 </html>
