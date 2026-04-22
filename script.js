@@ -76,6 +76,10 @@ window.onload = () => {
     setTimeout(() => {
       if (loader) loader.style.display = "none";
       if (content) content.classList.remove("hidden");
+       setTimeout(() => {
+        const footer = document.querySelector('.site-footer');
+        if (footer) footer.style.opacity = '1';
+      }, 400);
 
       initWatermarkParallax();
       initTouchOverlays();
