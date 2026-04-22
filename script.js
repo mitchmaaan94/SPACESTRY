@@ -79,6 +79,7 @@ window.onload = () => {
 
       initWatermarkParallax();
       initTouchOverlays();
+      initSecondaryNav(); 
 
       window.addEventListener("scroll", () => {
         if (!header) return;
