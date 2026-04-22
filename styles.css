@@ -1,3 +1,18 @@
+:root {
+    --color-bg:         #f7f7ed;
+    --color-green:      #1F4C3E;
+    --color-green-dark: #183B30;
+    --color-green-mid:  #2A6653;
+    --color-gold:       #D4C2A0;
+    --color-footer:     #001f1f;
+
+    --font-serif: 'Playfair Display', 'Cormorant Garamond', serif;
+    --font-sans:  'Inter', 'Helvetica Neue', sans-serif;
+
+    --transition-slow: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-med:  0.35s ease;
+}
+
 /* 1. TYPOGRAPHY (Imported via Google Fonts in index.html) */
 
 * {
