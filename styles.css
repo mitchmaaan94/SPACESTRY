@@ -489,6 +489,8 @@ p {
   font-size: 14px;
   letter-spacing: 0.06em;
   font-weight: 300;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 .site-footer__inner {
