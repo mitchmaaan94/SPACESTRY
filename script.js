@@ -89,3 +89,25 @@ window.onload = () => {
     }, 600);
   }, 2000);
 };
+
+function initSecondaryNav() {
+  const secondaryNav = document.getElementById('secondary-nav');
+  if (!secondaryNav) return;
+
+  const mainWrapper = document.querySelector('.main-wrapper');
+  let threshold = window.innerHeight * 0.25;
+
+  window.addEventListener('resize', () => {
+    threshold = window.innerHeight * 0.25;
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > threshold) {
+      secondaryNav.classList.add('visible');
+      if (mainWrapper) mainWrapper.style.paddingTop = secondaryNav.offsetHeight + 'px';
+    } else {
+      secondaryNav.classList.remove('visible');
+      if (mainWrapper) mainWrapper.style.paddingTop = '';
+    }
+  }, { passive: true });
+}
