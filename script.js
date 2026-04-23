@@ -31,7 +31,7 @@ function initWatermarkParallax() {
 
 function initTouchOverlays() {
   const noHoverQuery = window.matchMedia("(hover: none)");
-  const coarsePointerQuery = window.matchMedia("(pointer: coarse);");
+  const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
   const supportsTouch = noHoverQuery.matches || coarsePointerQuery.matches;
   if (!supportsTouch) return;
 
