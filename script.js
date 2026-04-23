@@ -11,8 +11,7 @@ function initWatermarkParallax() {
   frames.forEach((frame) => {
     const watermark = frame.querySelector(".floating-watermark");
     if (!watermark) return;
-    if (window.getComputedStyle(watermark).position === "sticky") return;
-
+    
     gsap.fromTo(
       watermark,
       { y: WATERMARK_PARALLAX_OFFSET },
@@ -32,7 +31,7 @@ function initWatermarkParallax() {
 
 function initTouchOverlays() {
   const noHoverQuery = window.matchMedia("(hover: none)");
-  const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
+  const coarsePointerQuery = window.matchMedia("(pointer: coarse);");
   const supportsTouch = noHoverQuery.matches || coarsePointerQuery.matches;
   if (!supportsTouch) return;
 
