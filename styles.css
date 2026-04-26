@@ -238,19 +238,11 @@ p {
 /* Links */
 .secondary-nav-links {
   list-style: none;
-  margin: 0;
+  margin-left: auto;
   padding: 0;
   display: flex;
   flex-direction: row;
   gap: 32px;
-}
-
-#secondary-nav.homepage .secondary-nav-links {
-  margin-left: auto;
-}
-
-#secondary-nav:not(.homepage) .secondary-nav-links {
-  margin-left: auto;
 }
 
 /* Individual Link Styles */
