@@ -88,7 +88,9 @@ window.onload = () => {
         if (!header) return;
         const scrollY = window.scrollY;
         const viewportHeight = window.innerHeight;
-        header.style.opacity = scrollY > viewportHeight * 0.25 ? "0" : "1";
+        const past = scrollY > viewportHeight * 0.25;
+        header.style.opacity = scrollY > past * 0.25 ? "0" : "1";
+        header.style.pointerEvents = past ? 'none' : '';
       });
     }, 600);
   }, 2000);
