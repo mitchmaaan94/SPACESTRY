@@ -1,5 +1,33 @@
 const WATERMARK_PARALLAX_OFFSET = 22; // px: subtle 44px total travel to keep watermark movement understated
 
+// Image parallax: the core "SCJ reveal" effect
+function initParallaxReveal() {
+  if (!hasGsapAndScrollTrigger()) return;
+  const frames = document.querySelectorAll(".window-frame");
+
+  frames.forEach((frame) => {
+    const img = frame.querySelector(".window-bg");
+    if (!img) return;
+
+    // Image starts slightly low (entering from below), travels upward.
+    // 130% tall image → ~23% of image height is "extra". We travel ~half that each way.
+    gsap.fromTo(
+      img,
+      { yPercent: 10 },     // start: image shifted down (bottom revealed as frame enters)
+      {
+        yPercent: -10,       // end: image shifted up (top revealed as frame exits)
+        ease: "none",
+        scrollTrigger: {
+          trigger: frame,
+          start: "top bottom",   // when frame bottom hits viewport bottom
+          end: "bottom top",     // when frame top hits viewport top
+          scrub: true
+        }
+      }
+    );
+  });
+}
+
 function hasGsapAndScrollTrigger() {
   return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 }
