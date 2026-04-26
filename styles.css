@@ -246,7 +246,7 @@ p {
 }
 
 #secondary-nav.homepage .secondary-nav-links {
-  margin-left: 0;
+  margin-left: auto;
 }
 
 #secondary-nav:not(.homepage) .secondary-nav-links {
