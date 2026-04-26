@@ -450,7 +450,7 @@ p {
     body { padding-top: 212px; }
     .main-wrapper { padding: 0 6%; }
     .window-frame { height: 84vh; }
-    .window-bg { height: 84vh; }
+    .window-bg { height: 130%; }
 }
 
 @media (max-width: 768px) {
@@ -463,13 +463,13 @@ p {
         height: 68vh;
         min-height: 320px;
     }
-    .window-bg { height: 68vh; }
+    .window-bg { height: 130%; }
     .floating-watermark {
         width: 150px;
         max-width: 40vw;
         margin-top: -110px;
     }
-    .scroll-container { height: 150vh; }
+    .scroll-container { height: auto; }
 }
 
 @media (max-width: 480px) {
@@ -480,12 +480,12 @@ p {
         height: 60vh;
         min-height: 280px;
     }
-    .window-bg { height: 60vh; }
+    .window-bg { height: 130%; }
     .project-overlay-text {
         padding: 10px 16px;
         letter-spacing: 0.14em;
     }
-    .scroll-container { height: 150vh; }
+    .scroll-container { height: auto; }
 }
 
 /* --- Premium minimal footer --- */
