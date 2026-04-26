@@ -1,5 +1,9 @@
 const WATERMARK_PARALLAX_OFFSET = 22; // px: subtle 44px total travel to keep watermark movement understated
 
+function hasGsapAndScrollTrigger() {
+  return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
+}
+
 // Image parallax: the core "SCJ reveal" effect
 function initParallaxReveal() {
   if (!hasGsapAndScrollTrigger()) return;
@@ -26,10 +30,6 @@ function initParallaxReveal() {
       }
     );
   });
-}
-
-function hasGsapAndScrollTrigger() {
-  return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 }
 
 function initWatermarkParallax() {
