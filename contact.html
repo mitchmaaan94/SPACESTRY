@@ -17,8 +17,127 @@
 </head>
 
 
-<body style="padding:80px">
+<style>
+  body {
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+      /* 1. Secondary nav — always visible (no scroll trigger needed) */
+    #secondary-nav {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
 
+    /* 2. Fixed footer — pinned to viewport bottom */
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: 1;      /* override the fade-in default */
+    }
+
+    /* 3. Main content area — fills space between nav and footer */
+    .contact-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* 48px top = secondary-nav height; 80px bottom = footer clearance */
+      padding: 80px 8% 80px;
+      margin-top: 48px;
+    }
+
+    /* Outer flex row: text left, QR right */
+    .contact-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(48px, 7vw, 100px);
+      width: 100%;
+      max-width: 860px;
+    }
+
+    /* 3. Text block — centered within its column */
+    .contact-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    .contact-text h1 {
+      /* Override the large margin-top from global h1 */
+      margin-top: 0;
+      margin-bottom: clamp(28px, 3vw, 44px);
+      line-height: 1.08;
+    }
+
+    .contact-text h3 {
+      margin-bottom: clamp(16px, 2vw, 24px);
+    }
+
+    .contact-text p {
+      margin-bottom: 10px;
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+    }
+
+    /* 4. QR code block — vertically centered, right column */
+    .contact-qr {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-qr a {
+      display: block;
+      border: 1px solid rgba(31, 76, 62, 0.18);
+      padding: 14px;
+      background: #ffffff;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-qr a:hover {
+      box-shadow: 0 6px 24px rgba(31, 76, 62, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .contact-qr img {
+      display: block;
+      width: clamp(140px, 15vw, 190px);
+      height: clamp(140px, 15vw, 190px);
+      object-fit: contain;
+    }
+
+    .contact-qr-label {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-green);
+      opacity: 0.65;
+      text-align: center;
+    }
+
+    /* Mobile: stack vertically, re-centre everything */
+    @media (max-width: 640px) {
+      .contact-layout {
+        flex-direction: column;
+        gap: 44px;
+      }
+
+      .contact-qr {
+        order: -1;      /* QR above text on mobile if preferred; remove to keep below */
+      }
+    }
+  
+</style>
+
+  <body>
+    
 <!--nav-->
   <nav id="secondary-nav" aria-label="Secondary navigation">
   <div class="secondary-nav-inner">
@@ -33,11 +152,27 @@
   </div>
 </nav>
   
-<h1>Let’s work together.</h1>
+<main class="contact-main">
+    <div class="contact-layout">
 
-<p>Email: studio.spacestry@gmail.com</p>
-<p>Phone: +91-9825125967</p>
+      <!-- Text: h1, h3, p -->
+      <div class="contact-text">
+        <h1>Let's work<br>together.</h1>
+        <p>studio.spacestry@gmail.com</p>
+        <p>+91-9825125967</p>
+      </div>
 
+      <!-- QR Code: right-offset, vertically centred -->
+      <div class="contact-qr">
+        <a href="https://www.instagram.com/studio.spacestry/" target="_blank" rel="noopener noreferrer"
+           aria-label="Follow SPACESTRY on Instagram">
+          <img src="spacestry-qr.png" alt="Scan to follow SPACESTRY on Instagram">
+        </a>
+        <span class="contact-qr-label">Follow on Instagram</span>
+      </div>
+
+    </div>
+  </main>
   <footer class="site-footer" role="contentinfo">
   <div class="site-footer__inner">
     <small class="site-footer__copyright">© SPACESTRY 2022-26. All rights reserved.</small>
