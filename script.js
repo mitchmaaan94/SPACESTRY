@@ -87,9 +87,8 @@ window.onload = () => {
       window.addEventListener("scroll", () => {
         if (!header) return;
         const scrollY = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const past = scrollY > viewportHeight * 0.25;
-        header.style.opacity = scrollY > past * 0.25 ? "0" : "1";
+        const past = scrollY > header.offsetHeight * 0.25;
+        header.style.opacity = past ? "0" : "1";
         header.style.pointerEvents = past ? 'none' : '';
       });
     }, 600);
@@ -101,10 +100,10 @@ function initSecondaryNav() {
   if (!secondaryNav) return;
 
   const mainWrapper = document.querySelector('.main-wrapper');
-  let threshold = window.innerHeight * 0.25;
-
+  const headerEl = document.querySelector('.header');
+  let threshold = (headerEl?.offsetHeight ?? window.innerHeight) * 0.25;
   window.addEventListener('resize', () => {
-    threshold = window.innerHeight * 0.25;
+  threshold = (headerEl?.offsetHeight ?? window.innerHeight) * 0.25;
   });
 
   window.addEventListener('scroll', () => {
