@@ -17,9 +17,9 @@ function initParallaxReveal() {
     // 130% tall image → ~23% of image height is "extra". We travel ~half that each way.
     gsap.fromTo(
       img,
-      { yPercent: 10 },     // start: image shifted down (bottom revealed as frame enters)
+      { yPercent: -2 },     // start: image shifted down (bottom revealed as frame enters)
       {
-        yPercent: -10,       // end: image shifted up (top revealed as frame exits)
+        yPercent: -20,       // end: image shifted up (top revealed as frame exits)
         ease: "none",
         scrollTrigger: {
           trigger: frame,
