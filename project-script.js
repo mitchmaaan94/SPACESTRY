@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (header) {
     window.addEventListener('scroll', () => {
       header.style.opacity = window.scrollY > window.innerHeight * 0.25 ? '0' : '1';
+      header.style.pointerEvents = past ? 'none' : '';
     }, { passive: true });
   }
 
