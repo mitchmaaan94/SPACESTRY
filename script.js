@@ -108,11 +108,15 @@ window.onload = () => {
         if (footer) footer.style.opacity = '1';
       }, 400);
 
-      initParallaxReveal();
-      initWatermarkParallax();
-      initTouchOverlays();
-      initSecondaryNav(); 
-      ScrollTrigger.refresh();
+      requestAnimationFrame(() => {
+    requestAnimationFrame(() => {         // two frames = guaranteed post-reflow
+        initParallaxReveal();
+        initWatermarkParallax();
+        initTouchOverlays();
+        initSecondaryNav();
+        ScrollTrigger.refresh();
+    });
+});
 
       window.addEventListener("scroll", () => {
         if (!header) return;
