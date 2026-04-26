@@ -68,6 +68,11 @@ p {
     letter-spacing: 0.01em;
 }
 
+/*justified text*/
+.justified-text {
+  text-align: justify;
+}
+
 /* 2. LOADING SCREEN (Preserved Brand Identity) */
 .loader {
     position: fixed;
