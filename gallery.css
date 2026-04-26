@@ -251,7 +251,7 @@
   font-weight: 350;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--lb-muted);
+  color: var(--lb-bright);
   white-space: nowrap;
   pointer-events: none;
 }
