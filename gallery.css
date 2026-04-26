@@ -247,8 +247,8 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--lb-font);
-  font-size: 10px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 350;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--lb-muted);
