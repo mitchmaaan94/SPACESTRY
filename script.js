@@ -108,6 +108,7 @@ window.onload = () => {
         if (footer) footer.style.opacity = '1';
       }, 400);
 
+      initParallaxReveal();
       initWatermarkParallax();
       initTouchOverlays();
       initSecondaryNav(); 
