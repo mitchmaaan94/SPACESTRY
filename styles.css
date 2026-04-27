@@ -31,7 +31,6 @@ body {
     color: #1F4C3E;
     line-height: 1.6;
     font-size: 16px;
-    padding-top: 240px; /* Offset for the large fixed header */
 }
 
 h1,
@@ -181,6 +180,8 @@ p {
 }
 
 /* 4. MAIN PROJECT LAYOUT */
+body { padding-top: 0; }
+
 .main-wrapper {
     max-width: 1600px;
     margin: 0 auto;
@@ -523,14 +524,12 @@ p {
 
 /* 8. RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
-    body { padding-top: 212px; }
     .main-wrapper { padding: 0 6%; }
     .window-frame { height: 84vh; }
     .window-bg { height: 130%; }
 }
 
 @media (max-width: 768px) {
-    body { padding-top: 180px; }
     .header-logo { max-width: 308px; }
     .tagline { font-size: 12px; }
     .main-wrapper { padding: 0 4.5%; }
@@ -549,7 +548,6 @@ p {
 }
 
 @media (max-width: 480px) {
-    body { padding-top: 164px; }
     .header { padding: 44px 18px 30px; }
     .project-title-sub { margin-bottom: 18px; }
     .window-frame {
