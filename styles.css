@@ -68,11 +68,11 @@ p {
 }
 
 .section-rule {
-  width: clamp(48px, 6vw, 80px);
-  height: 1px;
+  width: clamp(80px, 12vw, 180px);
+  height: 3px;
   background: var(--color-gold);
-  opacity: 0.6;
-  margin: 0 0 clamp(40px, 4vw, 64px) 0;
+  opacity: 0.75;
+  margin: 0 0 clamp(40px, 4vw, 77px) 0;
 }
 
 .founder {
