@@ -73,6 +73,7 @@ p {
   background: var(--color-gold);
   opacity: 0.75;
   margin: 0 0 clamp(40px, 4vw, 77px) 0;
+  will-change: width;  
 }
 
 .founder {
