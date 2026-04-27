@@ -68,6 +68,32 @@ p {
     letter-spacing: 0.01em;
 }
 
+.founder {
+  font-family: var(--font-serif);
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-gold); /* optional underline accent */
+}
+
+.qualification {
+  font-family: var(--font-serif);       /* Or keep sans for subtlety */
+  color: var(--color-gold);             /* Subtle gold for accent */
+  font-style: italic;                   /* For refined accent */
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.about-text h1 {
+  border-bottom: 2px solid var(--color-gold); /* thin gold line for luxury */
+  padding-bottom: 10px;
+  margin-bottom: 32px; /* give space below heading */
+}
+
+.about-text p:nth-of-type(2) {
+  border-left: 2px solid var(--color-gold); /* subtle gold bar */
+  padding-left: 18px;
+  font-style: italic;
+}
+
 /*justified text*/
 .justified-text {
   text-align: justify;
@@ -275,6 +301,16 @@ p {
 .secondary-nav-links a:hover::after,
 .secondary-nav-links a:focus-visible::after {
   transform: scaleX(1);
+}
+
+.about-text a {
+  color: var(--color-green);
+  border-bottom: 1px solid var(--color-gold);
+  text-decoration: none;
+  transition: border-color 0.25s;
+}
+.about-text a:hover, .about-text a:focus {
+  border-color: var(--color-green-dark);
 }
 
 /* --- Responsive: Mobile (max-width: 768px) --- */
