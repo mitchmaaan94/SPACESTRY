@@ -315,7 +315,7 @@ p {
 .about-divider {
   width: 2.5px;
   min-width: 2.5px;
-  height: 70%;
+  height: 120px;
   background: var(--color-gold, #D4C2A0);
   opacity: 0.78;
   border-radius: 2px;
