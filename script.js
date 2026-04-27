@@ -4,6 +4,23 @@ function hasGsapAndScrollTrigger() {
   return typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 }
 
+function initProjectsHeaderReveal() {
+  const title = document.querySelector('.projects-section-title');
+  if (!title || !hasGsapAndScrollTrigger()) return;
+
+  gsap.from(title, {
+    opacity: 0,
+    y: 28,
+    duration: 1.1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: title,
+      start: 'top 88%',
+      toggleActions: 'play none none none'
+    }
+  });
+}
+
 // Image parallax: the core "SCJ reveal" effect
 function initParallaxReveal() {
   if (!hasGsapAndScrollTrigger()) return;
@@ -123,6 +140,7 @@ window.addEventListener('resize', syncHeaderPadding);
         initWatermarkParallax();
         initTouchOverlays();
         initSecondaryNav();
+        initProjectsHeaderReveal();
         ScrollTrigger.refresh();
     });
 });
