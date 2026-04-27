@@ -157,9 +157,9 @@ p {
 
 .header-emblem {
   display: block;
-  height: clamp(52px, 6vw, 72px);   /* scales with viewport, tweak to taste */
+  height: clamp(104px, 12vw, 144px);   /* scales with viewport, tweak to taste */
   width: auto;
-  margin: 0 auto 12px;              /* centred, with breathing room above logo-text */
+  margin: 0 auto 4px;              /* centred, with breathing room above logo-text */
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
 }
 
