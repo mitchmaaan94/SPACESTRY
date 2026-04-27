@@ -71,8 +71,7 @@ p {
 .founder {
   font-family: var(--font-serif);
   letter-spacing: 0.04em;
-  border-bottom: 1px solid var(--color-gold); /* optional underline accent */
-}
+  }
 
 .qualification {
   font-family: var(--font-serif);       /* Or keep sans for subtlety */
@@ -313,6 +312,18 @@ p {
   border-color: var(--color-green-dark);
 }
 
+.about-divider {
+  width: 2.5px;
+  min-width: 2.5px;
+  height: 70%;
+  background: var(--color-gold, #D4C2A0);
+  opacity: 0.78;
+  border-radius: 2px;
+  margin: 0 clamp(18px, 2vw, 36px);
+  align-self: center;
+  box-shadow: 0 0 0.5px 0 var(--color-gold, #D4C2A0); /* subtle styling */
+}
+
 /* --- Responsive: Mobile (max-width: 768px) --- */
 @media (max-width: 768px) {
   .secondary-nav-inner {
@@ -320,6 +331,10 @@ p {
   }
   .secondary-nav-links {
     gap: 20px;
+  }
+ 
+  .about-divider {
+    display: none;
   }
 }
 
