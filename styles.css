@@ -68,7 +68,7 @@ p {
 }
 
 .section-rule {
-  width: clamp(80px, 12vw, 180px);
+  width: clamp(80px, 12vw, 240px);
   height: 3px;
   background: var(--color-gold);
   opacity: 0.75;
