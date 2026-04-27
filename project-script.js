@@ -3,6 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const nav = document.getElementById('secondary-nav');
   const footer = document.querySelector('.site-footer');
 
+// Sync body top-padding to actual header height
+function syncHeaderPadding() {
+  if (header) document.body.style.paddingTop = header.offsetHeight + 'px';
+}
+syncHeaderPadding();
+window.addEventListener('resize', syncHeaderPadding);
+  
   // Shared threshold: 25% of header height
   let threshold = header ? header.offsetHeight * 0.25 : 0;
   window.addEventListener('resize', () => {
