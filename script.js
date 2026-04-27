@@ -157,6 +157,7 @@ window.addEventListener('resize', syncHeaderPadding);
         initTouchOverlays();
         initSecondaryNav();
         initProjectsHeaderReveal();
+        initSectionRuleExpand();
         ScrollTrigger.refresh();
     });
 });
