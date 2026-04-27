@@ -615,6 +615,15 @@ body { padding-top: 0; }
   opacity: 0.95;
 }
 
+.easter-egg {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-footer);
+  margin-top: 12px;
+  pointer-events: none;
+}
+
 /* Responsive: stack and center on mobile */
 @media (max-width: 768px) {
   .site-footer {
