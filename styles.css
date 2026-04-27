@@ -233,6 +233,23 @@ p {
   margin: 0 auto;
 }
 
+/* ── About / Contact: inverted nav (gold on green, always visible) ── */
+#secondary-nav.inverted {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  background: linear-gradient(135deg, #1F4C3E 0%, #2A6653 100%);
+  border-bottom: 1px solid rgba(212, 194, 160, 0.12);
+}
+
+#secondary-nav.inverted .secondary-nav-links a {
+  color: var(--color-gold);
+}
+
+#secondary-nav.inverted .secondary-nav-links a::after {
+  background: var(--color-gold);
+}
+
 /* Secondary Nav Logo Group */
 .secondary-nav-logo {
   display: flex;
