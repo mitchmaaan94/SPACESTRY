@@ -156,6 +156,14 @@ p {
     z-index: 1000;
 }
 
+.header-emblem {
+  display: block;
+  height: clamp(52px, 6vw, 72px);   /* scales with viewport, tweak to taste */
+  width: auto;
+  margin: 0 auto 12px;              /* centred, with breathing room above logo-text */
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+
 .header-logo {
     max-width: 431px;
     padding-top: 27px;
