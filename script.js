@@ -21,6 +21,22 @@ function initProjectsHeaderReveal() {
   });
 }
 
+function initSectionRuleExpand() {
+  const rule = document.querySelector('.section-rule');
+  if (!rule || !hasGsapAndScrollTrigger()) return;
+
+  gsap.to(rule, {
+    width: '100vw',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: rule,
+      start: 'top 80%',    // begins when rule enters viewport
+      end: 'top 20%',      // completes as it rises toward top
+      scrub: 1             // ties expansion directly to scroll speed
+    }
+  });
+}
+
 // Image parallax: the core "SCJ reveal" effect
 function initParallaxReveal() {
   if (!hasGsapAndScrollTrigger()) return;
