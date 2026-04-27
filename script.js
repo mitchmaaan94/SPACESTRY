@@ -103,6 +103,15 @@ window.onload = () => {
     setTimeout(() => {
       if (loader) loader.style.display = "none";
       if (content) content.classList.remove("hidden");
+
+      // Sync body padding to actual header height (future-proof)
+function syncHeaderPadding() {
+  const h = document.querySelector('.header');
+  if (h) document.body.style.paddingTop = h.offsetHeight + 'px';
+}
+syncHeaderPadding();
+window.addEventListener('resize', syncHeaderPadding);
+      
        setTimeout(() => {
         const footer = document.querySelector('.site-footer');
         if (footer) footer.style.opacity = '1';
