@@ -7,8 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
 function syncHeaderPadding() {
   if (header) document.body.style.paddingTop = header.offsetHeight + 'px';
 }
-syncHeaderPadding();
-window.addEventListener('resize', syncHeaderPadding);
+syncHeaderPadding(); // first pass (may be pre-image)
+
+  // Re-measure once the logo image has fully loaded
+  const headerLogo = header?.querySelector('.header-logo');
+  if (headerLogo && !headerLogo.complete) {
+    headerLogo.addEventListener('load', syncHeaderPadding);
+  }
+
+  window.addEventListener('resize', syncHeaderPadding);
   
   // Shared threshold: 25% of header height
   let threshold = header ? header.offsetHeight * 0.25 : 0;
