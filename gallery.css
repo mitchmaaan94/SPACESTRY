@@ -100,7 +100,6 @@
 
 /* ── Project page spacing: header ↔ gallery ↔ footer ── */
 .gallery-grid {
-  padding-top: clamp(40px, 5vw, 72px);     /* breathe below fixed header */
   padding-bottom: clamp(48px, 6vw, 88px);  /* separate from footer       */
 }
 
