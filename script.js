@@ -26,7 +26,7 @@ function initSectionRuleExpand() {
   if (!rule || !hasGsapAndScrollTrigger()) return;
 
   gsap.to(rule, {
-    width: '100vw',
+    width: '100%',
     ease: 'none',
     scrollTrigger: {
       trigger: rule,
