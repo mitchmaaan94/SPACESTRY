@@ -1,179 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Contact - SPACESTRY Studio</title>
-
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Favicon (rounded, consistent across all pages) -->
-  <link rel="icon" type="image/png" href="/logo-rounded.png">
-  <link rel="apple-touch-icon" href="/logo-rounded.png">
-  <script src="project-script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spacestry — Contact</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logo-rounded.png">
+  <link rel="apple-touch-icon" href="logo-rounded.png">
   <meta name="theme-color" content="#1F4C3E">
 </head>
+<body>
 
-
-<style>
-  body {
-      padding-top: 0px;
-      padding-bottom: 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-      
-    /* 2. Fixed footer — pinned to viewport bottom */
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      opacity: 1;      /* override the fade-in default */
-    }
-
-    /* 3. Main content area — fills space between nav and footer */
-    .contact-main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* 48px top = secondary-nav height; 80px bottom = footer clearance */
-      padding: 80px 8% 80px;
-      margin-top: 48px;
-    }
-
-    /* Outer flex row: text left, QR right */
-    .contact-layout {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(48px, 7vw, 100px);
-      width: 100%;
-      max-width: 860px;
-    }
-
-    /* 3. Text block — centered within its column */
-    .contact-text {
-      flex: 1;
-      text-align: left;
-    }
-
-    .contact-text h1 {
-      /* Override the large margin-top from global h1 */
-      margin-top: 0;
-      margin-bottom: clamp(28px, 3vw, 44px);
-      line-height: 1.08;
-    }
-
-    .contact-text h3 {
-      margin-bottom: clamp(16px, 2vw, 24px);
-    }
-
-    .contact-text p {
-      margin-bottom: 10px;
-      font-size: clamp(1rem, 1.5vw, 1.25rem);
-    }
-
-    /* 4. QR code block — vertically centered, right column */
-    .contact-qr {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .contact-qr a {
-      display: block;
-      border: 1px solid rgba(31, 76, 62, 0.18);
-      padding: 14px;
-      background: #ffffff;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-
-    .contact-qr a:hover {
-      box-shadow: 0 6px 24px rgba(31, 76, 62, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .contact-qr img {
-      display: block;
-      width: clamp(140px, 15vw, 190px);
-      height: clamp(140px, 15vw, 190px);
-      object-fit: contain;
-    }
-
-    .contact-qr-label {
-      font-family: 'Inter', 'Helvetica Neue', sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-green);
-      opacity: 0.65;
-      text-align: center;
-    }
-
-    /* Mobile: stack vertically, re-centre everything */
-    @media (max-width: 640px) {
-      .contact-layout {
-        flex-direction: column;
-        gap: 44px;
-      }
-
-      .contact-qr {
-        order: -1;      /* QR above text on mobile if preferred; remove to keep below */
-      }
-    }
-  
-</style>
-
-  <body>
-    
-<!--nav-->
-  <nav id="secondary-nav" class="inverted" aria-label="Secondary navigation">
-  <div class="secondary-nav-inner">
-    <!-- Logo group: only shown on non-homepage pages -->
-      <a href="index.html" class="secondary-nav-logo" aria-label="SPACESTRY Home">
-      <img src="mono-logo.png" alt="" aria-hidden="true" height="28" width="28">
-      <img src="logo-text.png" alt="SPACESTRY" height="24">
-    </a>
-    <ul class="secondary-nav-links">
-      <li><a href="about.html">About</a></li>
-    </ul>
+  <!-- Cursor -->
+  <div id="cursor">
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
   </div>
-</nav>
-  
-<main class="contact-main">
-    <div class="contact-layout">
 
-      <!-- Text: h1, h3, p -->
-      <div class="contact-text">
-        <h1>Let's work<br>together.</h1>
-        <p>studio.spacestry@gmail.com</p>
-        <p>+91-9825125967</p>
-      </div>
+  <!-- Page Veil -->
+  <div id="page-veil"></div>
 
-      <!-- QR Code: right-offset, vertically centred -->
-      <div class="contact-qr">
-        <a href="https://www.instagram.com/studio.spacestry/" target="_blank" rel="noopener noreferrer"
-           aria-label="Follow SPACESTRY on Instagram">
-          <img src="spacestry-qr.png" alt="Scan to follow SPACESTRY on Instagram">
-        </a>
-        <span class="contact-qr-label">Follow on Instagram</span>
-      </div>
-
+  <!-- Nav — always visible on contact page -->
+  <nav id="secondary-nav" class="nav-visible" aria-label="Primary navigation">
+    <div class="secondary-nav-inner">
+      <a href="index.html" class="secondary-nav-logo" aria-label="Spacestry Home">
+        <img src="logo-text.png" alt="Spacestry" />
+      </a>
+      <ul class="secondary-nav-links">
+        <li><a href="index.html"          data-page="index">Home</a></li>
+        <li><a href="index.html#projects" data-page="projects">Projects</a></li>
+        <li><a href="about.html"          data-page="about">About</a></li>
+        <li><a href="contact.html"        data-page="contact" class="active">Contact</a></li>
+      </ul>
     </div>
-  </main>
+  </nav>
+
+  <!-- Contact split-screen -->
+  <div class="contact-page-wrap">
+
+    <!-- Left panel — dark, info -->
+    <div class="contact-left">
+      <h1 class="reveal">Let's work<br><em>together.</em></h1>
+
+      <div class="contact-details reveal d2">
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Email</span>
+          <span class="contact-detail-value">
+            <a href="mailto:studio.spacestry@gmail.com">studio.spacestry@gmail.com</a>
+          </span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Phone</span>
+          <span class="contact-detail-value">
+            <a href="tel:+919825125967">+91 98251 25967</a>
+          </span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Studio</span>
+          <span class="contact-detail-value">Ahmedabad, India</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Instagram</span>
+          <span class="contact-detail-value">
+            <a href="https://www.instagram.com/studio.spacestry/" target="_blank" rel="noopener noreferrer">@studio.spacestry</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="contact-qr-wrap reveal d3">
+        <a href="https://www.instagram.com/studio.spacestry/" target="_blank" rel="noopener noreferrer" aria-label="Scan to follow Spacestry on Instagram">
+          <img src="spacestry-qr.png" alt="Instagram QR code" />
+        </a>
+        <small>Scan to follow on Instagram</small>
+      </div>
+    </div>
+
+    <!-- Right panel — form -->
+    <div class="contact-right">
+      <h2 class="reveal">Send us a message</h2>
+
+      <div class="contact-form reveal d2" id="contact-form">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Ayesha Agarwal" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="hello@example.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="project">Project type</label>
+          <input type="text" id="project" name="project" placeholder="Residential / Commercial / Other" />
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about your space</label>
+          <textarea id="message" name="message" placeholder="Describe your project, timeline, and any questions…"></textarea>
+        </div>
+        <button class="btn-submit" id="btn-submit" type="button">
+          <span>Send message</span>
+        </button>
+      </div>
+
+      <div id="form-success">
+        Thank you — we'll be in touch shortly.
+      </div>
+    </div>
+
+  </div><!-- /contact-page-wrap -->
+
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-  <div class="site-footer__inner">
-    <small class="site-footer__copyright">© SPACESTRY 2022-26. All rights reserved.</small>
-    <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
-  </div>
-</footer>
+    <div class="site-footer__inner">
+      <small class="site-footer__copyright">© Spacestry 2022–26. All rights reserved.</small>
+      <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
+    </div>
+    <p class="easter-egg">Made with ❤︎ by Mitch</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Simple form submit handler — swap form for success message
+    document.getElementById('btn-submit').addEventListener('click', function () {
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) return; // basic guard
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    });
+  </script>
 
 </body>
 </html>
