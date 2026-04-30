@@ -137,23 +137,59 @@ p {
 .spinner { display: none !important; }  /* legacy — hidden */
 .hidden { display: none; }
 
-/* ─── HEADER (homepage) ─────────────────────────────────────── */
+/* ─── HEADER (homepage hero) ────────────────────────────────── */
 .header {
     text-align: center;
-    padding: 56px 25px 36px;
-    background: linear-gradient(135deg, var(--color-green) 0%, var(--color-green-mid) 100%);
+    padding: clamp(60px, 10vw, 100px) 25px clamp(80px, 10vw, 120px);
+    background: linear-gradient(160deg, var(--color-green) 0%, var(--color-green-mid) 60%, var(--color-green-dark) 100%);
     border-bottom: 1px solid rgba(212,194,160,0.1);
-    position: fixed; top: 0; left: 0; width: 100%;
-    z-index: 200;
-    transition: opacity 0.5s var(--ease);
+    position: relative;
+    min-height: 92vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    overflow: hidden;
 }
+/* Subtle grain texture overlay */
+.header::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35; pointer-events: none; z-index: 0;
+}
+.header > * { position: relative; z-index: 1; }
 .header-emblem {
-    display: block; height: clamp(90px, 10vw, 130px); width: auto;
-    margin: 0 auto 4px;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+    display: block; height: clamp(80px, 9vw, 120px); width: auto;
+    margin: 0 auto 0;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
+    animation: fadeInUp 1s 1.6s var(--ease-out) both;
 }
-.header-logo { max-width: 380px; padding-top: 20px; margin-bottom: 12px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); }
-.tagline { font-size: 11px; font-family: var(--font-sans); text-transform: uppercase; color: var(--color-gold); letter-spacing: 0.24em; font-weight: 400; }
+.header-logo {
+    max-width: clamp(220px, 32vw, 380px); padding-top: 18px; margin-bottom: 14px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    animation: fadeInUp 1s 1.85s var(--ease-out) both;
+}
+.tagline {
+    font-size: 10.5px; font-family: var(--font-sans); text-transform: uppercase;
+    color: var(--color-gold); letter-spacing: 0.28em; font-weight: 300;
+    animation: fadeIn 1s 2.1s var(--ease) both;
+}
+/* Scroll indicator */
+.header-scroll {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
+    animation: fadeIn 1s 2.6s var(--ease) both; cursor: none;
+}
+.header-scroll span {
+    font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
+    color: rgba(212,194,160,0.45); font-family: var(--font-sans);
+}
+.header-scroll-line {
+    width: 1px; height: 38px;
+    background: linear-gradient(to bottom, rgba(212,194,160,0.5), transparent);
+    animation: scrollPulse 2s 3s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 0.9; transform: scaleY(0.6); transform-origin: top; }
+}
 
 /* ─── NAVIGATION ────────────────────────────────────────────── */
 #secondary-nav {
@@ -226,6 +262,7 @@ p {
 /* ─── MAIN WRAPPER ──────────────────────────────────────────── */
 body { padding-top: 0; }
 .main-wrapper { max-width: 1600px; margin: 0 auto; padding: 0 5%; }
+.projects-section { padding-top: clamp(48px, 6vw, 80px); }
 
 /* ─── PROJECTS SECTION HEADER ───────────────────────────────── */
 .projects-header { margin-bottom: clamp(20px, 2.5vw, 40px); }
@@ -441,7 +478,10 @@ body { padding-top: 0; }
 
 /* ─── PROJECT GALLERY PAGES ─────────────────────────────────── */
 /* Header strip at top of each project page */
-.header.project-header { padding: 32px 25px 24px; position: relative; z-index: 1; }
+.header.project-header {
+    padding: 32px 25px 24px; position: relative; z-index: 1;
+    min-height: unset; display: block; overflow: visible;
+}
 .header.project-header .header-logo { max-width: 260px; padding-top: 0; margin-bottom: 8px; }
 
 /* main-wrapper for project gallery pages */
