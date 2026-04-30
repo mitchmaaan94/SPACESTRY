@@ -38,29 +38,11 @@ body {
     color: var(--color-green);
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
 }
 img { display: block; max-width: 100%; }
-a   { text-decoration: none; color: inherit; cursor: none; }
-button { border: none; background: none; cursor: none; font-family: inherit; }
+a   { text-decoration: none; color: inherit; }
+button { border: none; background: none; font-family: inherit; }
 
-/* ─── CUSTOM CURSOR ─────────────────────────────────────────── */
-#cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; }
-#cursor-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--color-green);
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s var(--ease), background 0.2s;
-}
-#cursor-ring {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 1px solid var(--color-gold);
-    transform: translate(-50%,-50%);
-    transition: transform 0.35s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.2s;
-    position: absolute; top: 0; left: 0;
-}
-body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: var(--color-gold); }
-body.cursor-hover #cursor-dot  { background: var(--color-gold); }
 
 /* ─── PAGE TRANSITION VEIL ──────────────────────────────────── */
 #page-veil {
@@ -175,7 +157,7 @@ p {
 .header-scroll {
     position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 9px;
-    animation: fadeIn 1s 2.6s var(--ease) both; cursor: none;
+    animation: fadeIn 1s 2.6s var(--ease) both;
 }
 .header-scroll span {
     font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
@@ -450,7 +432,7 @@ body { padding-top: 0; }
     border-bottom: 1px solid rgba(31,76,62,0.22);
     padding: 9px 0;
     font-family: var(--font-sans); font-size: 13.5px; font-weight: 300; letter-spacing: 0.04em;
-    color: var(--color-green); outline: none; cursor: none;
+    color: var(--color-green); outline: none; 
     transition: border-color 0.3s; resize: none;
 }
 .form-group input:focus, .form-group textarea:focus { border-bottom-color: var(--color-gold); }
@@ -461,7 +443,7 @@ body { padding-top: 0; }
     font-family: var(--font-sans); font-size: 9.5px; letter-spacing: 0.24em; text-transform: uppercase;
     padding: 13px 34px; border: 1px solid var(--color-green);
     color: var(--color-green); background: none;
-    position: relative; overflow: hidden; transition: color 0.4s; cursor: none;
+    position: relative; overflow: hidden; transition: color 0.4s; 
 }
 .btn-submit::before { content:''; position:absolute; inset:0; background: var(--color-green); transform:scaleX(0); transform-origin:left; transition: transform 0.4s var(--ease); }
 .btn-submit span { position: relative; z-index: 1; }
