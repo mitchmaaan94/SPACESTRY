@@ -1,26 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
-   SPACESTRY · Premium Gallery System — JS
+   SPACESTRY · Gallery System — JS
    Drop into every project page alongside gallery.css
    ═══════════════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── 1 · Auto-detect orientation ────────────────────────── */
-  function setOrient(img, item) {
-    if (item.dataset.orient) return;           // already set in HTML — skip
-    const w = img.naturalWidth, h = img.naturalHeight;
-    if (!w || !h) return;
-    item.dataset.orient = w >= h ? 'landscape' : 'portrait';
-  }
-
-  document.querySelectorAll('.gallery-item img').forEach(img => {
-    const item = img.closest('.gallery-item');
-    if (img.complete) { setOrient(img, item); }
-    else { img.addEventListener('load', () => setOrient(img, item)); }
-  });
-
-  /* ── 2 · Scroll-reveal ───────────────────────────────────── */
+  /* ── 1 · Scroll-reveal ───────────────────────────────────── */
   const revealObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -28,11 +14,12 @@
         revealObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.06 });
 
   document.querySelectorAll('.gallery-item').forEach(el => revealObs.observe(el));
 
-  /* ── 3 · Build lightbox DOM (once per page) ──────────────── */
+
+  /* ── 2 · Build lightbox DOM (once per page) ──────────────── */
   const items   = Array.from(document.querySelectorAll('.gallery-item'));
   let   current = 0;
 
@@ -67,6 +54,7 @@
   const lbCounter = lb.querySelector('.g-lb-counter');
   const lbTitle   = lb.querySelector('.g-lb-title');
 
+  /* ── Helpers ─────────────────────────────────────────────── */
   function updateCounter() {
     lbCounter.textContent = `${current + 1}  /  ${items.length}`;
   }
@@ -92,8 +80,9 @@
   }
 
   function open(index) {
-    // Read project name from the title element already in the page
-    lbTitle.textContent = document.querySelector('.tagline')?.textContent?.split('|')[0]?.trim() ?? '';
+    // Read project name from the .tagline element on the page
+    lbTitle.textContent =
+      document.querySelector('.tagline')?.textContent?.split('|')[0]?.trim() ?? '';
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     showImage(index);
@@ -106,7 +95,7 @@
     lbImg.src = '';
   }
 
-  /* ── 4 · Wire up clicks ──────────────────────────────────── */
+  /* ── 3 · Wire up clicks ──────────────────────────────────── */
   items.forEach((item, i) => item.addEventListener('click', () => open(i)));
 
   lb.querySelector('.g-lb-close').addEventListener('click', close);
@@ -116,12 +105,12 @@
   // Click backdrop to close
   lb.addEventListener('click', e => { if (e.target === lb) close(); });
 
-  // Keyboard
+  // Keyboard navigation
   document.addEventListener('keydown', e => {
     if (!lb.classList.contains('is-open')) return;
-    if (e.key === 'Escape')      close();
-    if (e.key === 'ArrowLeft')   showImage(current - 1);
-    if (e.key === 'ArrowRight')  showImage(current + 1);
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  showImage(current - 1);
+    if (e.key === 'ArrowRight') showImage(current + 1);
   });
 
 })();
