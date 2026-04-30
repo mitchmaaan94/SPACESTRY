@@ -1,83 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>GULRANG - SPACESTRY Studio</title>
-
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="gallery.css">
-
-  <!-- Favicon (rounded, consistent across all pages) -->
-  <link rel="icon" type="image/png" href="/logo-rounded.png">
-  <link rel="apple-touch-icon" href="/logo-rounded.png">
-  <script src="project-script.js" defer></script>
-  <script src="gallery.js" defer></script>
-  <meta name="theme-color" content="#1F4C3E">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spacestry — GULRANG</title>
+  <meta name="theme-color" content="#1F4C3E" />
+  <link rel="icon" type="image/png" href="logo-rounded.png" />
+  <link rel="apple-touch-icon" href="logo-rounded.png" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gallery.css" />
 </head>
-
 <body>
-  <!-- Header -->
+
+  <!-- Cursor -->
+  <div id="cursor">
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+  </div>
+
+  <!-- Page Veil -->
+  <div id="page-veil"></div>
+
+  <!-- Nav (no extra class — scroll-triggered on project pages) -->
+  <nav id="secondary-nav" aria-label="Secondary navigation">
+    <div class="secondary-nav-inner">
+      <a href="index.html" class="secondary-nav-logo" aria-label="Spacestry Home">
+        <img src="logo-text.png" alt="Spacestry" />
+      </a>
+      <ul class="secondary-nav-links">
+        <li><a href="index.html"          data-page="index">Home</a></li>
+        <li><a href="index.html#projects" data-page="projects">Projects</a></li>
+        <li><a href="about.html"          data-page="about">About</a></li>
+        <li><a href="contact.html"        data-page="contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Project Header -->
   <header class="header">
-    <img src="logo-text.png" class="header-logo">
-    <p class="tagline">GULRANG | Ahmedabad</p>
+    <img src="logo-text.png" class="header-logo" alt="Spacestry" />
+    <p class="tagline">GULRANG &nbsp;|&nbsp; Ahmedabad</p>
   </header>
 
-  <nav id="secondary-nav" aria-label="Secondary navigation">
-  <div class="secondary-nav-inner">
-    <!-- Logo group: only shown on non-homepage pages -->
-    <!-- On index.html, add class "homepage" to #secondary-nav -->
-    <a href="index.html" class="secondary-nav-logo" aria-label="SPACESTRY Home">
-      <img src="mono-logo.png" alt="" aria-hidden="true" height="28" width="28">
-      <img src="logo-text.png" alt="SPACESTRY" height="24">
-    </a>
-    <ul class="secondary-nav-links">
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
-  
-    <!-- Gallery -->
+  <!-- Gallery -->
   <main class="main-wrapper">
-  <div class="gallery-grid">
+    <div class="gallery-grid">
 
-    <div class="gallery-item" data-orient="landscape">
-      <img src="images/GULRANG - 01.jpg" alt="GULRANG 01">
+      <div class="gallery-item" data-orient="landscape">
+        <img src="images/GULRANG - 01.jpg" alt="Gulrang 01" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="landscape">
+        <img src="images/GULRANG - 02.jpg" alt="Gulrang 02" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="portrait">
+        <img src="images/GULRANG - 03.jpg" alt="Gulrang 03" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="portrait">
+        <img src="images/GULRANG - 04 - H.jpg" alt="Gulrang 04" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="portrait">
+        <img src="images/GULRANG - 05.jpg" alt="Gulrang 05" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="portrait">
+        <img src="images/GULRANG - 06.jpg" alt="Gulrang 06" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="landscape">
+        <img src="images/GULRANG - 07.jpg" alt="Gulrang 07" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+      <div class="gallery-item" data-orient="portrait">
+        <img src="images/GULRANG - 08.jpg" alt="Gulrang 08" loading="lazy" />
+        <div class="gallery-watermark"><img src="logo-text.png" alt="" aria-hidden="true" /></div>
+      </div>
+
+
     </div>
-    <div class="gallery-item" data-orient="landscape">
-      <img src="images/GULRANG - 02.jpg" alt="GULRANG 02">
-    </div>
-    <div class="gallery-item" data-orient="portrait">
-      <img src="images/GULRANG - 03.jpg" alt="GULRANG 03">
-    </div>
-    <div class="gallery-item" data-orient="portrait">
-      <img src="images/GULRANG - 04 - H.jpg" alt="GULRANG 04">
-    </div>
-    <div class="gallery-item" data-orient="portrait">
-      <img src="images/GULRANG - 05.jpg" alt="GULRANG 05">
-    </div>
-    <div class="gallery-item" data-orient="portrait">
-      <img src="images/GULRANG - 06.jpg" alt="GULRANG 06">
-    </div>
-    <div class="gallery-item" data-orient="landscape">
-      <img src="images/GULRANG - 07.jpg" alt="GULRANG 07">
-    </div>
-    <div class="gallery-item" data-orient="portrait">
-      <img src="images/GULRANG - 08.jpg" alt="GULRANG 08">
-    </div>
-    
-  </div>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-  <div class="site-footer__inner">
-    <small class="site-footer__copyright">© SPACESTRY 2022-26. All rights reserved.</small>
-    <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
-  </div>
-</footer>
-  
+    <div class="site-footer__inner">
+      <small class="site-footer__copyright">© Spacestry 2022–26. All rights reserved.</small>
+      <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="gallery.js"></script>
+  <script src="project-script.js"></script>
+
 </body>
 </html>
