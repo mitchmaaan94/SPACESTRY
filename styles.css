@@ -321,7 +321,7 @@ body { padding-top: 0; }
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: clamp(140px, 38vw, 220px);
+        grid-auto-rows: clamp(200px, 48vw, 300px);
     }
     .proj-card:nth-child(1), .proj-card:nth-child(2),
     .proj-card:nth-child(3), .proj-card:nth-child(4),
