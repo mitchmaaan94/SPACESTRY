@@ -1,183 +1,124 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>About Us - SPACESTRY Studio</title>
-
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Favicon (rounded, consistent across all pages) -->
-  <link rel="icon" type="image/png" href="/logo-rounded.png">
-  <link rel="apple-touch-icon" href="/logo-rounded.png">
-  <script src="project-script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spacestry — About</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logo-rounded.png">
+  <link rel="apple-touch-icon" href="logo-rounded.png">
   <meta name="theme-color" content="#1F4C3E">
-  <style>
-    /* ── About page layout ── */
-
-    body {
-      /* Reserve fixed element heights so flex centering is accurate */
-      padding-top: 48px;    /* secondary-nav */
-      padding-bottom: 84px; /* footer */
-      min-height: 100vh;
-      max-height: 100vh;    /* no scroll at 1.0 scale */
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-     /* Fixed footer */
-    .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      opacity: 1;
-    }
-
-    /* ── Main ── */
-    .about-main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      /* 4% horizontal = premium breathing room; minimal vertical (body padding handles it) */
-      padding: clamp(20px, 2.5vw, 40px) 4%;
-    }
-
-    /* ── Two-column row ── */
-    /* Geometry:  padding 4%+4% = 8%  |  gap 3vw  |  image 29vw  →  text ≈ 60vw (≈ ⅔ screen) */
-    .about-layout {
-      display: flex;
-      align-items: center;
-      gap: clamp(32px, 3vw, 56px);
-      width: 100%;
-      max-width: 1440px;
-    }
-
-    /* ── Left: text column (~⅔ screen) ── */
-    .about-text {
-      flex: 1 1 0%;
-      min-width: 0;
-    }
-
-    .about-text h1 {
-      margin-top: 0;
-      margin-bottom: clamp(20px, 2.2vw, 36px);
-      line-height: 1.03;
-    }
-
-    .about-text h3 {
-      margin-bottom: clamp(16px, 1.8vw, 28px);
-      line-height: 1.35;
-    }
-
-    .about-text p {
-      margin-bottom: 0;
-      line-height: 1.75;
-    }
-
-    .about-text p + p {
-      margin-top: clamp(10px, 1.2vw, 18px);
-    }
-
-    /* ── Right: image column (just under ⅓ screen) ── */
-    .about-image {
-      flex: 0 0 29vw;
-      max-width: 29vw;
-      align-self: stretch; /* fill the full content-area height */
-      display: flex;
-      align-items: center;
-    }
-
-    .about-image img {
-      width: 80%;
-      /* Height = viewport minus nav, footer, and main's vertical padding */
-      height: calc(100vh - 48px - 84px - clamp(40px, 5vw, 80px)*0.8);
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      margin: 0 auto; 
-    }
-
-    /* ── Mobile: stack vertically, re-enable scroll ── */
-    @media (max-width: 768px) {
-      body {
-        max-height: none;
-        overflow-y: auto;
-        padding-bottom: 84px;
-      }
-
-      .about-layout {
-        flex-direction: column;
-        gap: 36px;
-      }
-
-      .about-image {
-        flex: 0 0 auto;
-        max-width: 100%;
-        width: 80%;
-        height: calc(56vw*0.8);
-        align-self: auto;
-      }
-
-      .about-image img {
-        width: 100%;
-        height: 56vw;
-        object-fit: cover;
-      }
-    }
-  </style>
 </head>
-
 <body>
 
-  <!--nav-->
-  <nav id="secondary-nav" class="inverted" aria-label="Secondary navigation">
-  <div class="secondary-nav-inner">
-    <!-- Logo group: only shown on non-homepage pages -->
-      <a href="index.html" class="secondary-nav-logo" aria-label="SPACESTRY Home">
-      <img src="mono-logo.png" alt="" aria-hidden="true" height="28" width="28">
-      <img src="logo-text.png" alt="SPACESTRY" height="24">
-    </a>
-    <ul class="secondary-nav-links">
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+  <!-- Cursor -->
+  <div id="cursor">
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
   </div>
-</nav>
-  
- <main class="about-main">
-    <div class="about-layout">
 
-      <!-- Text column -->
-      <div class="about-text">
-        <h1>About SPACESTRY</h1>
-        <h3>
-  <span class="founder">Principal Designer - ID Ayesha Agarwal</span><br>
-  <span class="qualification">(BA Hons. Interior Architecture &amp; Design)</span>
-</h3>
-        <p>Exploring the quiet chemistry between space and the people within.</p>
-      
-      </div>
-<div class="about-divider"></div>
-      
-      <!-- Image column: just under ⅓ screen width -->
-      <div class="about-image">
-        <img src="team.png" alt="The SPACESTRY team">
-      </div>
+  <!-- Page Veil -->
+  <div id="page-veil"></div>
 
+  <!-- Nav — always visible on about page -->
+  <nav id="secondary-nav" class="nav-visible" aria-label="Primary navigation">
+    <div class="secondary-nav-inner">
+      <a href="index.html" class="secondary-nav-logo" aria-label="Spacestry Home">
+        <img src="logo-text.png" alt="Spacestry" />
+      </a>
+      <ul class="secondary-nav-links">
+        <li><a href="index.html"          data-page="index">Home</a></li>
+        <li><a href="index.html#projects" data-page="projects">Projects</a></li>
+        <li><a href="about.html"          data-page="about" class="active">About</a></li>
+        <li><a href="contact.html"        data-page="contact">Contact</a></li>
+      </ul>
     </div>
-  </main>
-  
+  </nav>
+
+  <!-- About Page -->
+  <div class="about-page-wrap">
+
+    <!-- Hero ─ text left, image right -->
+    <section class="about-hero">
+      <div class="about-hero-text">
+        <h1 class="reveal">We design<br>spaces that<br><em>breathe</em></h1>
+        <p class="about-hero-tagline reveal d2">
+          Exploring the quiet chemistry between space and the people within —
+          every room a careful negotiation between beauty and belonging.
+        </p>
+      </div>
+      <div class="about-hero-visual reveal-right">
+        <img src="team.png" alt="The Spacestry team" class="about-hero-img" />
+      </div>
+    </section>
+
+    <!-- Founder ─ dark green band -->
+    <section class="about-founder">
+      <div class="about-founder-label reveal">Principal Designer</div>
+      <div class="about-founder-content reveal d2">
+        <h2>ID Ayesha Agarwal —<br><em>BA Hons. Interior Architecture &amp; Design</em></h2>
+        <p>
+          Ayesha founded Spacestry with a single conviction: that a well-designed space
+          changes how you feel inside it. Drawing on her training in interior architecture,
+          she brings together considered materiality, spatial restraint, and a deep
+          understanding of the lives that unfold within every room she touches.
+        </p>
+        <p>
+          Her practice moves between residential and commercial work — from intimate
+          homes in Ahmedabad to curated hospitality environments — always seeking
+          that still point where form and feeling meet.
+        </p>
+        <div class="credentials">
+          <div class="credential">Interior Architecture &amp; Design, CEPT University</div>
+          <div class="credential">Residential &amp; Commercial Interiors</div>
+          <div class="credential">Spacestry Studio, Est. 2022</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy ─ 3-col grid -->
+    <section class="about-philosophy">
+      <h2 class="reveal">Our Philosophy</h2>
+      <div class="philosophy-grid">
+        <div class="philosophy-item reveal d1">
+          <h3>Restraint over excess</h3>
+          <p>
+            We believe in removing until nothing more can be taken away.
+            Every surface, material, and detail must earn its place —
+            and earn it through feeling, not just function.
+          </p>
+        </div>
+        <div class="philosophy-item reveal d2">
+          <h3>People first</h3>
+          <p>
+            Spaces exist for the people who live and work inside them.
+            We begin each project by listening, and we finish only when
+            the space feels unmistakably like its owners.
+          </p>
+        </div>
+        <div class="philosophy-item reveal d3">
+          <h3>Craft in every detail</h3>
+          <p>
+            The difference between a good space and an extraordinary one
+            is found in the joints, the thresholds, the quality of light
+            at 4 pm. We take the small things seriously.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /about-page-wrap -->
+
+  <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-  <div class="site-footer__inner">
-    <small class="site-footer__copyright">© SPACESTRY 2022-26. All rights reserved.</small>
-    <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
-  </div>
-    <p class="easter-egg">Made with ❤︎ by Mitch</p>
-</footer>
+    <div class="site-footer__inner">
+      <small class="site-footer__copyright">© Spacestry 2022–26. All rights reserved.</small>
+      <a class="site-footer__top" href="#top" aria-label="Scroll to top">Go up ↑</a>
+    </div>
+   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
