@@ -259,11 +259,9 @@ body { padding-top: 0; }
     color: var(--color-green); opacity: 0.65;
 }
 
-/* Grow "Selected Projects" h1 from 33 % → 100 % in sync with section-rule */
+/* Scroll-driven reveal for "Selected Projects" h1 */
 .projects-header h1 {
-    transform-origin: left center;
-    transform: scaleX(0.33); /* JS scroll-driver overrides this continuously */
-    will-change: transform;
+    will-change: font-size, opacity, transform;
 }
 
 /* ─── HOMEPAGE PROJECTS GRID ────────────────────────────────── */
