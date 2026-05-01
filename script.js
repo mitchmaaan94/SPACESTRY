@@ -73,7 +73,62 @@ function initHeaderFade() {
     header.style.pointerEvents = past ? 'none' : '';
   }, { passive: true });
 }
- 
+
+// ── Section Rule — scroll-driven width ──────────────────────
+function initSectionRule() {
+  const rule = document.querySelector('.section-rule');
+  if (!rule) return;
+
+  let current = 0;   // 0 → 1 fraction
+  let target  = 0;
+  let rafId   = null;
+
+  function minPx() {
+    return Math.min(200, Math.max(60, window.innerWidth * 0.1));
+  }
+
+  function calcTarget() {
+    const rect = rule.getBoundingClientRect();
+    const vh   = window.innerHeight;
+    // rule enters viewport bottom → expands → full width when top hits 55 % down
+    const t = (vh - rect.top) / (vh * 0.45);
+    return Math.max(0, Math.min(1, t));
+  }
+
+  function applyWidth() {
+    const parentW = rule.parentElement.offsetWidth || window.innerWidth * 0.9;
+    rule.style.width = (minPx() + (parentW - minPx()) * current) + 'px';
+  }
+
+  function tick() {
+    target  = calcTarget();
+    current += (target - current) * 0.065;   // lower = more trailing / silkier
+
+    if (Math.abs(target - current) < 0.0003) {
+      current = target;
+      applyWidth();
+      rafId = null;
+      return;
+    }
+
+    applyWidth();
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function kick() {
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('scroll', kick, { passive: true });
+  window.addEventListener('resize', () => {
+    target = current = calcTarget();   // snap cleanly on resize
+    applyWidth();
+  });
+
+  // seed on first paint
+  target = current = calcTarget();
+  applyWidth();
+}
  
 // ── Loader ───────────────────────────────────────────────────
 function initLoader() {
@@ -86,6 +141,7 @@ function initLoader() {
       loader.style.display = 'none';
        window.scrollTo(0, 0);
       initReveal();
+      initSectionRule(); 
       initSecondaryNav();
       initHeaderFade();
       initActiveNav();
