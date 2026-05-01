@@ -84,6 +84,7 @@ function initLoader() {
     loader.style.opacity = '0';
     setTimeout(() => {
       loader.style.display = 'none';
+       window.scrollTo(0, 0);
       initReveal();
       initSecondaryNav();
       initHeaderFade();
