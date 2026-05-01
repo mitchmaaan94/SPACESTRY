@@ -123,7 +123,7 @@ p {
 .header {
     text-align: center;
     padding: clamp(60px, 10vw, 100px) 25px clamp(80px, 10vw, 120px);
-    background-image: url("bg-home-banner.jpg") 
+    background-image: url("bg-home-banner.jpg");
     background-position: center center;
     background-size: cover; 
     background-repeat: no-repeat;
