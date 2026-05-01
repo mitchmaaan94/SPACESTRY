@@ -123,8 +123,7 @@ p {
 .header {
     text-align: center;
     padding: clamp(60px, 10vw, 100px) 25px clamp(80px, 10vw, 120px);
-    background: linear-gradient(160deg, var(--color-green) 0%, var(--color-green-mid) 60%, var(--color-green-dark) 100%);
-    border-bottom: 1px solid rgba(212,194,160,0.1);
+    background: linear-gradient(160deg, var(--color-green) 0%, var(--color-green-mid) 60%, var(--color-green-dark) 100%), url('main/bg-homepage-banner.png') center center / cover no-repeat;    border-bottom: 1px solid rgba(212,194,160,0.1);
     position: relative;
     min-height: 92vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
