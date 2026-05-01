@@ -262,11 +262,8 @@ body { padding-top: 0; }
 /* Grow "Selected Projects" h1 from 33 % → 100 % in sync with section-rule */
 .projects-header h1 {
     transform-origin: left center;
-    transform: scaleX(0.33);
-    transition: transform 0.9s var(--ease-out);
-}
-.projects-header.visible h1 {
-    transform: scaleX(1);
+    transform: scaleX(0.33); /* JS scroll-driver overrides this continuously */
+    will-change: transform;
 }
 
 /* ─── HOMEPAGE PROJECTS GRID ────────────────────────────────── */
