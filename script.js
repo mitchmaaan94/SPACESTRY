@@ -79,30 +79,37 @@ function initSectionRule() {
   const rule = document.querySelector('.section-rule');
   if (!rule) return;
 
-  let current = 0;   // 0 → 1 fraction
+  // Constrain max width to the projects grid content area
+  const grid = document.querySelector('.projects-grid');
+
+  let current = 0;
   let target  = 0;
   let rafId   = null;
 
-  function minPx() {
-    return Math.min(200, Math.max(60, window.innerWidth * 0.1));
+  function maxPx() {
+    // Hard-lock to the grid's rendered width; fall back to parent
+    return (grid ? grid.offsetWidth : null)
+        || rule.parentElement.offsetWidth
+        || window.innerWidth * 0.9;
   }
 
   function calcTarget() {
     const rect = rule.getBoundingClientRect();
     const vh   = window.innerHeight;
-    // rule enters viewport bottom → expands → full width when top hits 55 % down
-    const t = (vh - rect.top) / (vh * 0.45);
+    // Full width when rule's top edge reaches 27 % down from viewport top
+    // Formula: t = 1 when rect.top = vh * 0.27
+    //   → divisor = vh - vh * 0.27 = vh * 0.73
+    const t = (vh - rect.top) / (vh * 0.73);
     return Math.max(0, Math.min(1, t));
   }
 
   function applyWidth() {
-    const parentW = rule.parentElement.offsetWidth || window.innerWidth * 0.9;
-    rule.style.width = (minPx() + (parentW - minPx()) * current) + 'px';
+    rule.style.width = (maxPx() * current) + 'px';
   }
 
   function tick() {
     target  = calcTarget();
-    current += (target - current) * 0.065;   // lower = more trailing / silkier
+    current += (target - current) * 0.065; // silky trailing feel
 
     if (Math.abs(target - current) < 0.0003) {
       current = target;
@@ -121,7 +128,7 @@ function initSectionRule() {
 
   window.addEventListener('scroll', kick, { passive: true });
   window.addEventListener('resize', () => {
-    target = current = calcTarget();   // snap cleanly on resize
+    target = current = calcTarget(); // snap on resize
     applyWidth();
   });
 
