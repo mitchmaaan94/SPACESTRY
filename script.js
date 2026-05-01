@@ -171,3 +171,84 @@ function initLoader() {
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
 });
+
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO MICRO-INTERACTIONS  v3.0
+   1. Subtle parallax — background moves slower than scroll
+   2. Mouse-reactive warm glow overlay
+   ═══════════════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  const hero = document.querySelector('.header[data-parallax]');
+  if (!hero) return;
+
+  /* ── 1. Mouse-reactive gradient overlay ──────────────────────
+     Injects a tiny warm radial gradient that follows the cursor.
+     Opacity is capped at 1 (the CSS max is already very low at 0.07).
+     Effect is barely perceptible — almost subliminal.
+     ──────────────────────────────────────────────────────────── */
+
+  // Create the overlay element
+  const mouseGlow = document.createElement('div');
+  mouseGlow.className = 'header-mouse-glow';
+  hero.insertBefore(mouseGlow, hero.firstChild);
+
+  // Track mouse position inside the hero
+  hero.addEventListener('mousemove', function (e) {
+    const rect  = hero.getBoundingClientRect();
+    const mx    = ((e.clientX - rect.left) / rect.width)  * 100;
+    const my    = ((e.clientY - rect.top)  / rect.height) * 100;
+
+    // Write custom properties — CSS reads them in radial-gradient
+    hero.style.setProperty('--mx', mx.toFixed(1) + '%');
+    hero.style.setProperty('--my', my.toFixed(1) + '%');
+
+    // Fade in glow when mouse enters
+    mouseGlow.style.opacity = '1';
+  }, { passive: true });
+
+  // Fade out when cursor leaves the hero
+  hero.addEventListener('mouseleave', function () {
+    mouseGlow.style.opacity = '0';
+  }, { passive: true });
+
+  /* ── 2. Parallax — background drifts at 30% of scroll speed ──
+     Uses requestAnimationFrame for smooth 60fps performance.
+     Only active on non-touch/desktop to avoid mobile jank.
+     ──────────────────────────────────────────────────────────── */
+
+  // Skip parallax on touch devices
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice         = window.matchMedia('(hover: none)').matches;
+
+  if (!prefersReducedMotion && !isTouchDevice) {
+    let ticking = false;
+    let lastY   = 0;
+
+    function updateParallax () {
+      const scrollY  = window.scrollY;
+      const heroH    = hero.offsetHeight;
+
+      // Only update while hero is in the viewport
+      if (scrollY < heroH * 1.2) {
+        // Background shifts at 30% of scroll velocity — subtle
+        const offsetY = (scrollY * 0.30).toFixed(2);
+        hero.style.backgroundPosition = `center calc(50% + ${offsetY}px)`;
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      lastY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+})();
