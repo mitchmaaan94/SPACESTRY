@@ -256,6 +256,16 @@ body { padding-top: 0; }
     color: var(--color-green); opacity: 0.65;
 }
 
+/* Grow "Selected Projects" h1 from 33 % → 100 % in sync with section-rule */
+.projects-header h1 {
+    transform-origin: left center;
+    transform: scaleX(0.33);
+    transition: transform 0.9s var(--ease-out);
+}
+.projects-header.visible h1 {
+    transform: scaleX(1);
+}
+
 /* ─── HOMEPAGE PROJECTS GRID ────────────────────────────────── */
 .projects-grid {
     display: grid;
