@@ -119,61 +119,313 @@ p {
 .spinner { display: none !important; }  /* legacy — hidden */
 .hidden { display: none; }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO SECTION — Quiet Luxury Refinement  v3.0
+   Design tone: material richness · architectural calm · premium restraint
+   
+   Overlay architecture:
+     ::before  → multi-layer gradient stack
+                 [1] overall dark veil (deepen green tone)
+                 [2] radial warm glow behind logo (center focus)
+                 [3] vignette (edges darker than center)
+     ::after   → subtle grain texture (tactile depth, carried from v2)
+   
+   All assets (logo.png, logo-text.png) are enhanced via CSS filter only.
+   No image files are modified.
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── NEW KEYFRAMES (hero-specific) ────────────────────────── */
+
+/* Scroll dot — slow descending pulse, barely perceptible */
+@keyframes scrollDrop {
+  0%   { transform: translateY(0);   opacity: 0;   }
+  30%  { opacity: 1; }
+  70%  { opacity: 0.6; }
+  100% { transform: translateY(22px); opacity: 0; }
+}
+
+/* Logo text — extremely subtle breathing shimmer on gold */
+@keyframes goldBreath {
+  0%, 100% { filter: brightness(1.02) contrast(1.05) drop-shadow(0 2px 18px rgba(180,148,90,0.08)); }
+  50%       { filter: brightness(1.06) contrast(1.08) drop-shadow(0 2px 24px rgba(180,148,90,0.18)); }
+}
+
+/* Monogram halo — very slow, barely perceptible pulse */
+@keyframes haloPulse {
+  0%, 100% { opacity: 0.18; transform: scale(1);    }
+  50%       { opacity: 0.28; transform: scale(1.04); }
+}
+
 /* ─── HEADER (homepage hero) ────────────────────────────────── */
 .header {
-    text-align: center;
-    padding: clamp(60px, 10vw, 100px) 25px clamp(80px, 10vw, 120px);
-    background-image: url("bg-home-banner.jpg");
-    background-position: center center;
-    background-size: cover; 
-    background-repeat: no-repeat;
-    border-bottom: 1px solid rgba(212,194,160,0.1);
-    position: relative;
-    min-height: 92vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    overflow: hidden;
+  text-align: center;
+
+  /* Generous vertical padding — luxury = space */
+  padding: clamp(80px, 12vw, 140px) 25px clamp(100px, 13vw, 160px);
+
+  /* Background: leather texture fills the frame */
+  background-image: url("bg-home-banner.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* Parallax target: JS will nudge background-position on scroll */
+  will-change: background-position;
+
+  border-bottom: 1px solid rgba(212,194,160,0.08);
+  position: relative;
+  min-height: 96vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate; /* keeps z-index stacking clean */
 }
-/* Subtle grain texture overlay */
+
+/* ── LAYER 1: Multi-gradient overlay stack ────────────────────
+   Three gradients combined in a single ::before declaration.
+   Stacking order (painter's algorithm, top → bottom):
+   [a] Vignette      — darkens the four edges, center stays clear
+   [b] Radial glow   — warm amber halo centred where logo sits
+   [c] Dark veil     — overall tonal deepening of the green leather
+   ──────────────────────────────────────────────────────────── */
 .header::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: 0.35; pointer-events: none; z-index: 0;
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    /* [a] Vignette — soft darkness at all four edges */
+    radial-gradient(
+      ellipse 110% 90% at 50% 50%,
+      transparent 40%,
+      rgba(10, 22, 18, 0.62) 100%
+    ),
+    /* [b] Radial warm glow — amber corona behind the centred monogram.
+          Positioned slightly above vertical center to align with logo.
+          Very low opacity — creates focus without being obvious. */
+    radial-gradient(
+      ellipse 52% 38% at 50% 46%,
+      rgba(168, 130, 70, 0.11) 0%,
+      transparent 70%
+    ),
+    /* [c] Dark tonal veil — deepens the green without crushing texture.
+          A gentle linear sweep from deep top to slightly lighter base. */
+    linear-gradient(
+      180deg,
+      rgba(12, 26, 20, 0.55) 0%,
+      rgba(18, 38, 28, 0.40) 40%,
+      rgba(14, 30, 22, 0.58) 100%
+    );
 }
-.header > * { position: relative; z-index: 1; }
+
+/* ── LAYER 2: Grain texture ───────────────────────────────────
+   Inherited from v2 — provides tactile "material" quality.
+   Moved to ::after so it sits above gradients but below content.
+   ──────────────────────────────────────────────────────────── */
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+
+  /* SVG fractalNoise grain — same as original */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.28; /* slightly reduced from 0.35 — grain should whisper */
+  mix-blend-mode: overlay;
+}
+
+/* All direct children stack above both pseudo-elements */
+.header > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* ── Mouse-reactive gradient overlay ─────────────────────────
+   A very faint warm highlight that shifts subtly with cursor.
+   The JS below writes a CSS custom property that this reads.
+   ──────────────────────────────────────────────────────────── */
+.header-mouse-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 40% 30% at var(--mx, 50%) var(--my, 50%),
+    rgba(168, 130, 70, 0.07) 0%,
+    transparent 70%
+  );
+  /* Only visible on desktop — opacity is also driven by JS, starts 0 */
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* ── Monogram emblem (logo.png) ───────────────────────────────
+   5% larger than before for stronger hierarchy.
+   drop-shadow lifted to a diffused gold-tinted glow.
+   The "halo" is simulated by layering two drop-shadows:
+     inner: tight warm edge
+     outer: large diffuse ambient
+   ──────────────────────────────────────────────────────────── */
 .header-emblem {
-    display: block; height: clamp(80px, 9vw, 120px); width: auto;
-    margin: 0 auto 0;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
-    animation: fadeInUp 1s 1.6s var(--ease-out) both;
+  display: block;
+
+  /* Slightly larger — tests at ~5% increase from clamp(80px,9vw,120px) */
+  height: clamp(88px, 10vw, 130px);
+  width: auto;
+  margin: 0 auto;
+
+  /* Halo effect via layered drop-shadows (no blur on image itself) */
+  filter:
+    drop-shadow(0 0  6px  rgba(168, 130, 70, 0.20))   /* tight warm corona */
+    drop-shadow(0 0  28px rgba(168, 130, 70, 0.10))   /* soft ambient glow  */
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.30));      /* grounding shadow   */
+
+  animation: fadeInUp 1s 1.6s var(--ease-out) both;
+  transition: filter 0.8s ease;
 }
+
+/* On hover — halo intensifies very slightly */
+.header-emblem:hover {
+  filter:
+    drop-shadow(0 0  8px  rgba(168, 130, 70, 0.30))
+    drop-shadow(0 0  36px rgba(168, 130, 70, 0.16))
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.30));
+}
+
+/* ── SPACESTRY wordmark (logo-text.png) ───────────────────────
+   CSS filter creates the illusion of metallic warmth:
+   - brightness(1.04)   → lifts the gold slightly
+   - contrast(1.06)     → increases the separation between dark/light
+   - sepia(0.08)        → adds the tiniest warm amber cast
+   - drop-shadow        → diffused glow, not a hard drop-shadow
+   The goldBreath animation adds an almost imperceptible shimmer.
+   ──────────────────────────────────────────────────────────── */
 .header-logo {
-    max-width: clamp(220px, 32vw, 380px); padding-top: 18px; margin-bottom: 14px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    animation: fadeInUp 1s 1.85s var(--ease-out) both;
+  max-width: clamp(220px, 32vw, 380px);
+
+  /* Increased top gap from monogram — breathing room */
+  padding-top: clamp(22px, 2.8vw, 36px);
+
+  /* Increased bottom gap to tagline */
+  margin-bottom: clamp(18px, 2vw, 28px);
+
+  /* Metallic warmth filter stack */
+  filter:
+    brightness(1.04)
+    contrast(1.06)
+    sepia(0.08)
+    drop-shadow(0 2px 20px rgba(168, 130, 70, 0.14))
+    drop-shadow(0 1px  4px rgba(0, 0, 0, 0.22));
+
+  /* Slow breath cycle — 8s feels calm, not flashy */
+  animation:
+    fadeInUp    1s   1.85s var(--ease-out) both,
+    goldBreath  8s   3s    ease-in-out     infinite;
 }
+
+/* ── Tagline ──────────────────────────────────────────────────
+   Brighter but still restrained: opacity 0.72 → still subtle.
+   Wider tracking (+0.05em) improves architectural spacing.
+   max-width prevents text stretching on wide viewports.
+   ──────────────────────────────────────────────────────────── */
 .tagline {
-    font-size: 10.5px; font-family: var(--font-sans); text-transform: uppercase;
-    color: var(--color-gold); letter-spacing: 0.28em; font-weight: 300;
-    animation: fadeIn 1s 2.1s var(--ease) both;
+  font-size: 10.5px;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+
+  /* Slightly warmer/brighter than original rgba(212,194,160,1) */
+  color: rgba(220, 205, 172, 0.72);
+
+  /* Wider tracking — architectural calm */
+  letter-spacing: 0.33em;
+  font-weight: 300;
+
+  /* Constrain width — avoid stretching on ultrawide */
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Small top breathing gap below logo */
+  padding-top: 4px;
+
+  animation: fadeIn 1s 2.1s var(--ease) both;
 }
-/* Scroll indicator */
+
+/* ── Scroll indicator — upgraded ─────────────────────────────
+   Replaces "Scroll" text + static line with:
+     • A thin vertical track (1px, 48px tall)
+     • A small dot that animates downward in a slow loop
+   The word "Scroll" is gone — visual language only.
+   ──────────────────────────────────────────────────────────── */
 .header-scroll {
-    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 9px;
-    animation: fadeIn 1s 2.6s var(--ease) both;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s 2.8s var(--ease) both;
 }
-.header-scroll span {
-    font-size: 7.5px; letter-spacing: 0.32em; text-transform: uppercase;
-    color: rgba(212,194,160,0.45); font-family: var(--font-sans);
+
+/* The thin vertical track */
+.header-scroll-track {
+  position: relative;
+  width: 1px;
+  height: 52px;
+
+  /* Track: gold fading to transparent */
+  background: linear-gradient(
+    to bottom,
+    rgba(212, 194, 160, 0.55),
+    rgba(212, 194, 160, 0.08)
+  );
+  overflow: hidden;
 }
-.header-scroll-line {
-    width: 1px; height: 38px;
-    background: linear-gradient(to bottom, rgba(212,194,160,0.5), transparent);
-    animation: scrollPulse 2s 3s ease-in-out infinite;
+
+/* The descending dot */
+.header-scroll-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(212, 194, 160, 0.9);
+
+  /* Slow loop — 2.4s feels calm, not urgent */
+  animation: scrollDrop 2.4s 3.2s ease-in-out infinite;
 }
-@keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
-    50%       { opacity: 0.9; transform: scaleY(0.6); transform-origin: top; }
+
+/* ── Responsive adjustments ───────────────────────────────── */
+@media (max-width: 768px) {
+  .header {
+    /* Slightly less padding on mobile — still generous */
+    padding: clamp(60px, 14vw, 100px) 20px clamp(80px, 12vw, 120px);
+  }
+
+  .tagline {
+    /* Slightly tighter tracking on narrow viewports */
+    letter-spacing: 0.22em;
+    max-width: 90vw;
+  }
+
+  .header-emblem {
+    /* Slightly smaller on mobile */
+    height: clamp(72px, 16vw, 100px);
+  }
+
+  /* Disable mouse glow on touch devices — not applicable */
+  .header-mouse-glow { display: none; }
 }
 
 /* ─── NAVIGATION ────────────────────────────────────────────── */
