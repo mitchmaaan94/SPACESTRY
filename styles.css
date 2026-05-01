@@ -234,16 +234,11 @@ p {
 
 /* ─── SECTION RULE ──────────────────────────────────────────── */
 .section-rule {
-    width: var(--section-rule-width, clamp(60px, 10vw, 200px)); 
     height: 2px;
-    background: var(--color-gold); opacity: 0.7;
+    width: 0;                          /* JS takes over immediately */
+    background: var(--color-gold);
+    opacity: 0.7;
     margin: 0 0 clamp(32px, 4vw, 64px) 0;
-    will-change: width;
-    transition: width 1s cubic-bezier(0.4,0,0.2,1);
-}
-
-.section-rule.visible {
-    width: 100%;
 }
 
 /* ─── MAIN WRAPPER ──────────────────────────────────────────── */
