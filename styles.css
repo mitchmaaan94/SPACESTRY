@@ -162,7 +162,7 @@ p {
   text-align: center;
 
   /* Generous vertical padding — luxury = space */
-  padding: clamp(80px, 12vw, 140px) 25px clamp(100px, 13vw, 160px);
+  padding: clamp(50px, 7vw, 90px) 25px clamp(100px, 13vw, 160px);
 
   /* Background: leather texture fills the frame */
   background-image: url("bg-home-banner.jpg");
