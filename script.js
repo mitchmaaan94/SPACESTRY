@@ -79,13 +79,9 @@ function initSectionRule() {
   const rule = document.querySelector('.section-rule');
   if (!rule) return;
 
-  // Constrain max width and h1 to the projects grid content area
+  // Constrain max width to the projects grid content area
   const grid = document.querySelector('.projects-grid');
-  const titleH1 = document.querySelector('.projects-header h1');
-  const fullSize = titleH1
-  ? parseFloat(getComputedStyle(titleH1).fontSize)
-  : null;
-
+    
   let current = 0;
   let target  = 0;
   let rafId   = null;
@@ -109,12 +105,6 @@ function initSectionRule() {
 
   function applyWidth() {
     rule.style.width = (maxPx() * current) + 'px';
-     // Drive h1 scale in lockstep — lerp scaleX from 0.33 → 1
-   if (titleH1 && fullSize) {
-  titleH1.style.fontSize  = (fullSize * (0.45 + 0.55 * current)) + 'px';
-  titleH1.style.opacity   = current;
-  titleH1.style.transform = `translateY(${(1 - current) * 18}px)`;
-}
   }
 
   function tick() {
