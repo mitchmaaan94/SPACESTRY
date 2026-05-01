@@ -79,8 +79,9 @@ function initSectionRule() {
   const rule = document.querySelector('.section-rule');
   if (!rule) return;
 
-  // Constrain max width to the projects grid content area
+  // Constrain max width and h1 to the projects grid content area
   const grid = document.querySelector('.projects-grid');
+  const titleH1 = document.querySelector('.projects-header h1');
 
   let current = 0;
   let target  = 0;
@@ -105,6 +106,8 @@ function initSectionRule() {
 
   function applyWidth() {
     rule.style.width = (maxPx() * current) + 'px';
+     // Drive h1 scale in lockstep — lerp scaleX from 0.33 → 1
+    if (titleH1) titleH1.style.transform = 'scaleX(' + (0.33 + 0.67 * current) + ')';
   }
 
   function tick() {
