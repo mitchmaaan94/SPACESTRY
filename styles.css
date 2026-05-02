@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    SPACESTRY · Global Styles  v2.0
    Brand : Forest Green #1F4C3E · Warm Gold #D4C2A0
-   Fonts : Cormorant Garamond (serif) · Jost (sans)
+   Fonts : Quillo (serif) · Jost (sans)
 ═══════════════════════════════════════════════════════════════ */
 
 /* ─── LOCAL FONTS ───────────────────────────────────────────── */
@@ -41,7 +41,7 @@
     --color-gold-lt:     #E8D9C2;
     --color-footer:      #001f1f;
 
-    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-serif: 'Quillo', Georgia, serif;
     --font-sans:  'Jost', 'Helvetica Neue', sans-serif;
 
     --ease:            cubic-bezier(0.25, 0.46, 0.45, 0.94);
