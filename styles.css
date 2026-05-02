@@ -166,7 +166,7 @@ p {
 
   /* Background: leather texture fills the frame */
   background-image: url("bg-home-banner.jpg");
-  background-position: center bottom;
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
 
