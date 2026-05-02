@@ -141,12 +141,12 @@ function initSectionRule() {
 function initLoader() {
   const loader = document.getElementById('loader');
   if (!loader) return;
- 
+  document.body.style.overflow = 'hidden';
   setTimeout(() => {
     loader.style.opacity = '0';
     setTimeout(() => {
       loader.style.display = 'none';
-       window.scrollTo(0, 0);
+      document.body.style.overflow = ''; 
       initReveal();
       initSectionRule(); 
       initSecondaryNav();
