@@ -165,8 +165,8 @@ p {
 /* Scroll dot — slow descending pulse, barely perceptible */
 @keyframes scrollDrop {
   0%   { transform: translateY(0);   opacity: 0;   }
-  30%  { opacity: 1; }
-  70%  { opacity: 0.6; }
+  20%  { opacity: 1; }
+  67%  { opacity: 0.87; }
   100% { transform: translateY(22px); opacity: 0; }
 }
 
@@ -426,9 +426,9 @@ p {
   height: 9px;
   border-radius: 50%;
   background: rgba(212, 194, 160, 1.0);
-
-  /* Slow loop — 2.4s feels calm, not urgent */
-  animation: scrollDrop 2.4s 3.2s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(212, 194, 160, 0.7);
+  /* Slow loop — 2.1s feels calm, not urgent */
+  animation: scrollDrop 2.1s 3.2s ease-in-out infinite;
 }
 
 /* ── Responsive adjustments ───────────────────────────────── */
