@@ -711,9 +711,17 @@ body { padding-top: 0; }
 
 /* Mobile grid */
 @media (max-width: 768px) {
-    .projects-grid {
+   .projects-layout {
+        display: block;               /* remove flex row, let grid fill full width */
+    }
+    .view-switcher {
+        display: none; 
+   .projects-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: clamp(200px, 48vw, 300px);
+    }
+    .projects-grid.view-1 .proj-card {
+        height: clamp(52vh, 60vh, 70vh);
     }
     .proj-card:nth-child(1), .proj-card:nth-child(2),
     .proj-card:nth-child(3), .proj-card:nth-child(4),
