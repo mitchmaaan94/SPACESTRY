@@ -503,12 +503,18 @@ body { padding-top: 0; }
 .main-wrapper { max-width: 1600px; margin: 0 auto; padding: 0 5%; }
 .projects-section { padding-top: clamp(48px, 6vw, 80px); }
 
-/* ─── PROJECTS SECTION HEADER ───────────────────────────────── */
-.projects-header { margin-bottom: clamp(20px, 2.5vw, 40px); }
-.projects-section-title {
-    font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.3em;
-    font-family: var(--font-sans); font-weight: 300;
-    color: var(--color-green); opacity: 0.65;
+/* ─── PROJECTS SECTION HEADER — Editorial label ─────────────── */
+.projects-header h1 {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-green);
+    opacity: 0.65;
+    /* override global h1 sizing */
+    line-height: 1;
+    margin: 0;
 }
 
 /* ─── HOMEPAGE PROJECTS GRID ────────────────────────────────── */
