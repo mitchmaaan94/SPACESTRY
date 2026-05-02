@@ -115,8 +115,7 @@ function initScrollHeader() {
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
-  initSecondaryNav();
-  initHeaderFade();
+  initScrollHeader();
   initActiveNav();
 
   const footer = document.querySelector('.site-footer');
