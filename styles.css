@@ -4,7 +4,32 @@
    Fonts : Cormorant Garamond (serif) · Jost (sans)
 ═══════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
+/* ─── LOCAL FONTS ───────────────────────────────────────────── */
+@font-face {
+    font-family: 'Quillo';
+    src: url('quillo-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quillo';
+    src: url('quillo-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quillo';
+    src: url('quillo-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap');
 
 /* ─── TOKENS ───────────────────────────────────────────────── */
 :root {
