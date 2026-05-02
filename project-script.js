@@ -50,30 +50,67 @@ function initActiveNav() {
   });
 }
 
-
-// ── Secondary Nav (scroll-triggered) ────────────────────────
-function initSecondaryNav() {
-  const nav = document.getElementById('secondary-nav');
-  if (!nav) return;
-
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('visible', window.scrollY > 40);
-  }, { passive: true });
-}
-
-
-// ── Header Fade on Scroll ────────────────────────────────────
-function initHeaderFade() {
+// ── Header ↔ Nav coordinated crossfade ───────────────────────
+function initScrollHeader() {
   const header = document.querySelector('.header');
-  if (!header) return;
+  const nav    = document.getElementById('secondary-nav');
+  if (!header || !nav) return;
 
-  window.addEventListener('scroll', () => {
-    const past = window.scrollY > header.offsetHeight * 0.25;
-    header.style.opacity = past ? '0' : '1';
-    header.style.pointerEvents = past ? 'none' : '';
-  }, { passive: true });
+  let hCur = 1, hTgt = 1;   // header opacity
+  let nCur = 0, nTgt = 0;   // nav opacity
+  let rafId = null;
+
+  function calcTargets() {
+    const t = Math.max(0, Math.min(1,
+      window.scrollY / (header.offsetHeight * 0.52)
+    ));
+
+    hTgt = 1 - t;
+
+    // Nav crossfades in: silent for first 30% of header scroll,
+    // then catches up and is fully present by 78%
+    nTgt = Math.max(0, Math.min(1, (t - 0.3) / 0.48));
+  }
+
+  function tick() {
+    calcTargets();
+
+    const LERP = 0.075;               // lower = dreamier trail
+    hCur += (hTgt - hCur) * LERP;
+    nCur += (nTgt - nCur) * LERP;
+
+    // Header
+    header.style.opacity       = hCur;
+    header.style.pointerEvents = hCur < 0.04 ? 'none' : '';
+
+    // Nav — opacity + micro-drift
+    nav.style.opacity       = nCur;
+    nav.style.transform     = `translateY(${(1 - nCur) * -6}px)`;
+    nav.style.pointerEvents = nCur > 0.08 ? 'auto' : 'none';
+
+    const done = Math.abs(hTgt - hCur) < 0.001
+              && Math.abs(nTgt - nCur) < 0.001;
+    if (done) {
+      hCur = hTgt; nCur = nTgt; rafId = null;
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
+  }
+
+  function kick() {
+    if (!rafId) rafId = requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('scroll', kick, { passive: true });
+
+  // Seed without animating on first paint
+  calcTargets();
+  hCur = hTgt; nCur = nTgt;
+  header.style.opacity       = hCur;
+  nav.style.opacity          = nCur;
+  nav.style.transform        = `translateY(${(1 - nCur) * -6}px)`;
+  nav.style.pointerEvents    = nCur > 0.08 ? 'auto' : 'none';
 }
-
 
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
