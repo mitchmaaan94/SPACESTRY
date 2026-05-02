@@ -403,8 +403,8 @@ p {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 5px;
-  height: 5px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: rgba(212, 194, 160, 1.0);
 
