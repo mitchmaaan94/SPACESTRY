@@ -312,7 +312,7 @@ p {
   max-width: clamp(220px, 32vw, 380px);
 
   /* Increased top gap from monogram — breathing room */
-  padding-top: clamp(48px, 4vw, 56px);
+  padding-top: clamp(148px, 4vw, 56px);
 
   /* Increased bottom gap to tagline */
   margin-bottom: clamp(18px, 2vw, 28px);
