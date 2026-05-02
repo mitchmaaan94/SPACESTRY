@@ -431,6 +431,10 @@ p {
   animation: scrollDrop 2.1s 3.2s ease-in-out infinite;
 }
 
+.header-scroll-dot--b {
+  animation-delay: 4.46s; /* 3.2s page-load delay + 1.26s (60% of 2.1s cycle) */
+}
+
 /* ── Responsive adjustments ───────────────────────────────── */
 @media (max-width: 768px) {
   .header {
