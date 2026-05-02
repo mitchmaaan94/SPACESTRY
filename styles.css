@@ -634,7 +634,7 @@ body { padding-top: 0; }
 .vs-icons {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 6px;
   justify-content: center;
   align-items: center;
 }
