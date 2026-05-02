@@ -359,6 +359,12 @@ p {
   animation: fadeIn 1s 2.1s var(--ease) both;
 }
 
+.tagline-dot {
+  font-size: 1.6em;
+  vertical-align: middle;
+  line-height: 0;
+}
+
 /* ── Scroll indicator — upgraded ─────────────────────────────
    Replaces "Scroll" text + static line with:
      • A thin vertical track (1px, 48px tall)
