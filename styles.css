@@ -385,14 +385,14 @@ p {
 /* The thin vertical track */
 .header-scroll-track {
   position: relative;
-  width: 1px;
-  height: 52px;
+  width: 2px;
+  height: 56px;
 
   /* Track: gold fading to transparent */
   background: linear-gradient(
     to bottom,
-    rgba(212, 194, 160, 0.55),
-    rgba(212, 194, 160, 0.08)
+    rgba(212, 194, 160, 0.85),
+    rgba(212, 194, 160, 0.20)
   );
   overflow: hidden;
 }
@@ -403,10 +403,10 @@ p {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 3px;
-  height: 3px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: rgba(212, 194, 160, 0.9);
+  background: rgba(212, 194, 160, 1.0);
 
   /* Slow loop — 2.4s feels calm, not urgent */
   animation: scrollDrop 2.4s 3.2s ease-in-out infinite;
