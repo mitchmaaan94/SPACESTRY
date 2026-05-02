@@ -443,9 +443,8 @@ p {
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(31,76,62,0.12);
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-6px);
     pointer-events: none;
-    transition: opacity var(--transition-med), transform var(--transition-med);
 }
 /* Scroll-triggered (homepage + project pages) */
 #secondary-nav.visible      { opacity: 1; transform: translateY(0); pointer-events: auto; }
