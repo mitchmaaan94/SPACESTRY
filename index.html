@@ -64,8 +64,16 @@
       <div class="section-rule reveal d1"></div>
       </div>
 
-      <div class="projects-grid">
+      <div class="projects-layout">
+        
+<!-- Narrow switcher column — ~1/10 of content width -->
+  <aside class="view-switcher" aria-label="View mode">
+    <span class="vs-label" data-view="1" aria-pressed="true">1</span>
+    <span class="vs-label" data-view="2" aria-pressed="false">2</span>
+  </aside>
 
+  <!-- Grid — takes the remaining ~9/10 -->
+        <div class="projects-grid" id="projects-grid">
         <!-- 01 · Sukoonat — col span 7 -->
         <a href="sukoonat.html" class="proj-card reveal d1" aria-label="View project: Sukoonat">
           <img src="images/SUKOONAT - 01 - H.jpg" alt="Sukoonat — interior view">
@@ -139,6 +147,7 @@
         </a>
 
       </div><!-- /.projects-grid -->
+      </div><!---Projects-layout--->
     </section>
 
     <!-- About Strip -->
