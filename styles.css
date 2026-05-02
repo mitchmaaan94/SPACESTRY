@@ -607,6 +607,55 @@ body { padding-top: 0; }
     min-width: 0;
 }
 
+/* ── View Switcher — icon upgrade (additive only) ──────────────── */
+
+/* Widen the switcher column to fit two icons side by side */
+.view-switcher:has(.vs-icons) {
+  width: auto;
+  min-width: 56px;
+}
+
+/* "View" text label above the icons */
+.vs-view-label {
+  display: block;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-green);
+  opacity: 0.4;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+/* Icons row — centered, side by side */
+.vs-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make each .vs-label a flex item and remove text cursor */
+.vs-icons .vs-label {
+  line-height: 0;        /* removes whitespace gap under SVG */
+  padding: 2px;
+}
+
+/* SVG paths — inactive: outline only */
+.vs-label .house-path {
+  fill: none;
+  transition: fill 0.2s ease;
+}
+
+/* SVG paths — active: filled with taupe */
+.vs-label[aria-pressed="true"] .house-path {
+  fill: #9c8d7e;
+}
+
 /* ─── VIEW STATE 1 — Single / Cinematic ───────────────────── */
 .projects-grid.view-1 {
     display: flex;
