@@ -560,6 +560,90 @@ body { padding-top: 0; }
     gap: clamp(8px, 1vw, 18px);
     margin-bottom: clamp(60px, 7vw, 100px);
 }
+/* ─── VIEW SWITCHER LAYOUT ─────────────────────────────────── */
+.projects-layout {
+    display: flex;
+    align-items: flex-start;          /* switcher aligns to top of first image */
+    gap: clamp(12px, 1.5vw, 24px);   /* same-feel whitespace as outer margin */
+}
+
+/* Narrow typographic column — ~1/10 the content area */
+.view-switcher {
+    width: clamp(28px, 4vw, 48px);   /* ~1/10th of 5% padded 1600px container */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 4px;                 /* micro-nudge to optically align with first image top */
+    position: sticky;
+    top: calc(var(--nav-h) + 16px);  /* stays in view when scrolling the tall grid */
+}
+
+.vs-label {
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-green);
+    cursor: pointer;
+    opacity: 0.28;                    /* inactive = dimmed */
+    transition: opacity 0.2s ease;
+    user-select: none;
+    line-height: 1;
+}
+
+.vs-label[aria-pressed="true"] {
+    opacity: 1;                       /* active = full opacity */
+}
+
+.vs-label:hover {
+    opacity: 0.65;
+}
+
+/* The grid itself fills the remaining width */
+.projects-layout .projects-grid {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ─── VIEW STATE 1 — Single / Cinematic ───────────────────── */
+.projects-grid.view-1 {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(64px, 9vw, 120px);     /* generous vertical whitespace between cards */
+}
+
+.projects-grid.view-1 .proj-card {
+    width: 100%;
+    aspect-ratio: unset;
+    height: clamp(60vh, 75vh, 82vh);  /* portrait/cinematic tall */
+}
+
+/* ─── VIEW STATE 2 — Two-column Grid ──────────────────────── */
+.projects-grid.view-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(8px, 1vw, 18px);       /* gutter = outer margin (same clamp as default) */
+    grid-auto-rows: auto;
+}
+
+.projects-grid.view-2 .proj-card {
+    grid-column: span 1 !important;   /* override all nth-child spans */
+    aspect-ratio: 3 / 2;
+    height: auto;
+}
+
+/* ─── CROSS-FADE TRANSITION ────────────────────────────────── */
+.projects-grid {
+    /* applied always so both enter and exit are smooth */
+    transition: opacity 0.15s ease;
+}
+
+.projects-grid.view-switching {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .proj-card { position: relative; overflow: hidden; background: var(--color-green-dark); display: block; }
 
