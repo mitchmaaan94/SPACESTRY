@@ -279,3 +279,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 })();
+
+/* ─── VIEW SWITCHER ─────────────────────────────────────────── */
+(function () {
+  const labels = document.querySelectorAll('.vs-label');
+  const grid   = document.getElementById('projects-grid');
+  if (!labels.length || !grid) return;
+
+  // Set initial state: View 2 (grid) is the default on load
+  let current = '2';
+  grid.classList.add('view-2');
+  document.querySelector('[data-view="2"]').setAttribute('aria-pressed', 'true');
+  document.querySelector('[data-view="1"]').setAttribute('aria-pressed', 'false');
+
+  labels.forEach(label => {
+    label.addEventListener('click', () => {
+      const next = label.dataset.view;
+      if (next === current) return;
+
+      // 1. Fade out
+      grid.classList.add('view-switching');
+
+      setTimeout(() => {
+        // 2. Swap layout class
+        grid.classList.remove('view-1', 'view-2');
+        grid.classList.add(`view-${next}`);
+
+        // 3. Update aria-pressed on labels
+        labels.forEach(l => l.setAttribute('aria-pressed', l.dataset.view === next ? 'true' : 'false'));
+
+        // 4. Fade back in
+        grid.classList.remove('view-switching');
+        current = next;
+      }, 150); // matches the 0.15s CSS transition
+    });
+  });
+})();
