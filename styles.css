@@ -360,9 +360,9 @@ p {
 }
 
 .tagline-dot {
-  font-size: 1.6em;
+  font-size: 1.8em;
+  display: inline-block;
   vertical-align: middle;
-  line-height: auto;
 }
 
 /* ── Scroll indicator — upgraded ─────────────────────────────
