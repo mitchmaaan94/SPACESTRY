@@ -337,12 +337,12 @@ p {
    max-width prevents text stretching on wide viewports.
    ──────────────────────────────────────────────────────────── */
 .tagline {
-  font-size: 10.5px;
+  font-size: 12px;
   font-family: var(--font-sans);
   text-transform: uppercase;
 
   /* Slightly warmer/brighter than original rgba(212,194,160,1) */
-  color: rgba(220, 205, 172, 0.72);
+  color: rgba(220, 205, 172, 0.93);
 
   /* Wider tracking — architectural calm */
   letter-spacing: 0.33em;
