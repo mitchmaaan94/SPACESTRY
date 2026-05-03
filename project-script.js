@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initScrollHeader();
   initActiveNav();
+  initNavDots();
 
   const footer = document.querySelector('.site-footer');
   if (footer) footer.style.opacity = '1';
