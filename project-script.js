@@ -112,6 +112,31 @@ function initScrollHeader() {
   nav.style.pointerEvents    = nCur > 0.08 ? 'auto' : 'none';
 }
 
+// ── Nav Dots ─────────────────────────────────────────────────
+function initNavDots() {
+  const nav   = document.getElementById('secondary-nav');
+  const btn   = document.querySelector('.nav-dots-btn');
+  const links = document.querySelectorAll('.secondary-nav-links a');
+  if (!nav || !btn) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  links.forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initReveal();
