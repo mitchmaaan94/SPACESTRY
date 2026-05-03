@@ -436,6 +436,16 @@ p {
   animation-fill-mode: backwards;
 }
 
+/* Arrowhead — sits flush beneath the scroll track, flipped to point down */
+.header-scroll-arrowhead {
+  display: block;
+  width: 12px;          /* scales tip to match the 2px track visually */
+  height: auto;
+  margin-top: 0;        /* nil gap — flush against track bottom */
+  transform: scaleY(-1); /* invert vertically → points downward */
+  opacity: 0.75;        /* matches the faded track bottom (~0.20–0.85 range) */
+}
+
 /* ── Responsive adjustments ───────────────────────────────── */
 @media (max-width: 768px) {
   .header {
