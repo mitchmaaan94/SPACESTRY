@@ -223,7 +223,8 @@ function initNavDots() {
 
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  initLoader();
+   initNavDots();
+   initLoader();
 });
 
 
