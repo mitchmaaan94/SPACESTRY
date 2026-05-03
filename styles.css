@@ -504,7 +504,7 @@ p {
 }
 .nav-dots-btn:hover { opacity: 1; }
 
-/* ── Alcove icon — closed = arch, open = × ───────────────── */
+/* ── Alcove icon — closed = filled arch, open = outline arch ─ */
 .nav-dots-btn span { display: none; } /* remove legacy spans */
 
 .nav-icon {
@@ -513,30 +513,30 @@ p {
     color: var(--color-green);
 }
 
-.nav-icon__alcove,
-.nav-icon__x {
+.nav-icon__filled,
+.nav-icon__alcove {
     transition:
         opacity  0.3s var(--ease),
         transform 0.35s var(--ease);
     transform-origin: 24px 19.5px;
 }
 
-/* Closed (default) — arch visible, × hidden */
-.nav-icon__alcove {
+/* Closed (default) — filled arch visible, outline hidden */
+.nav-icon__filled {
     opacity: 1;
     transform: none;
 }
-.nav-icon__x {
+.nav-icon__alcove {
     opacity: 0;
-    transform: rotate(-15deg) scale(0.85);
+    transform: scale(0.9);
 }
 
-/* Open — arch hidden, × visible */
-.nav-dots-btn[aria-expanded="true"] .nav-icon__alcove {
+/* Open — outline arch visible, filled hidden */
+.nav-dots-btn[aria-expanded="true"] .nav-icon__filled {
     opacity: 0;
-    transform: rotate(15deg) scale(0.85);
+    transform: scale(0.9);
 }
-.nav-dots-btn[aria-expanded="true"] .nav-icon__x {
+.nav-dots-btn[aria-expanded="true"] .nav-icon__alcove {
     opacity: 1;
     transform: none;
 }
