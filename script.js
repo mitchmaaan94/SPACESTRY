@@ -194,7 +194,33 @@ function initLoader() {
   }, 2000);
 }
  
- 
+// ── Nav Dots ─────────────────────────────────────────────────
+function initNavDots() {
+  const nav   = document.getElementById('secondary-nav');
+  const btn   = document.querySelector('.nav-dots-btn');
+  const links = document.querySelectorAll('.secondary-nav-links a');
+  if (!nav || !btn) return;
+
+  btn.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close when a link is clicked
+  links.forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('nav-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      nav.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
