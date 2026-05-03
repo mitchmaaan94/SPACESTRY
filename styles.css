@@ -498,7 +498,7 @@ p {
 .nav-dots-btn {
     background: none; border: none; cursor: pointer;
     display: flex; align-items: center; gap: 5px;
-    padding: 8px; margin-left: auto;
+    padding: 8px; margin-left: 0; order: 2;
     opacity: 0.7; transition: opacity 0.2s;
 }
 .nav-dots-btn:hover { opacity: 1; }
@@ -545,7 +545,8 @@ p {
 
 /* Links hidden by default; revealed on .nav-open */
 .secondary-nav-links {
-    list-style: none; padding: 0; margin-left: 0;
+    list-style: none; padding: 0; margin-left: auto;
+    order: 1;
     display: flex; gap: 32px;
     opacity: 0;
     pointer-events: none;
