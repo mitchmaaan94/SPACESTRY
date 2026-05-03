@@ -189,6 +189,7 @@ function initLoader() {
       initSectionRule(); 
       initScrollHeader();
       initActiveNav();
+      initNavDots();
     }, 600);
   }, 2000);
 }
