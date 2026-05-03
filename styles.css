@@ -494,7 +494,36 @@ p {
 .secondary-nav-logo img { height: 20px; width: auto; }
 #secondary-nav.homepage .secondary-nav-logo { display: none; }
 
-.secondary-nav-links { list-style: none; margin-left: auto; padding: 0; display: flex; gap: 32px; }
+/* ── Three-dots toggle ───────────────────────────────────── */
+.nav-dots-btn {
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 5px;
+    padding: 8px; margin-left: auto;
+    opacity: 0.7; transition: opacity 0.2s;
+}
+.nav-dots-btn:hover { opacity: 1; }
+.nav-dots-btn span {
+    display: block; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--color-green);
+    transition: transform 0.2s;
+}
+.nav-dots-btn[aria-expanded="true"] span:nth-child(1) { transform: scale(1.4); }
+.nav-dots-btn[aria-expanded="true"] span:nth-child(3) { transform: scale(1.4); }
+
+/* Links hidden by default; revealed on .nav-open */
+.secondary-nav-links {
+    list-style: none; padding: 0; margin-left: 0;
+    display: flex; gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+#secondary-nav.nav-open .secondary-nav-links {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
 .secondary-nav-links a {
     position: relative;
     font-family: var(--font-sans); font-size: 10.5px; font-weight: 400;
