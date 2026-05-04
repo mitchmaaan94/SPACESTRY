@@ -16,19 +16,6 @@
   --icon-sw:     1.5;
 }
 
-
-/* ── 2. Hero Scroll Indicator — Wrapper ──────────────────────────────── */
-/* Flex column so .header-scroll (shaft) sits above the arrowhead (tip). */
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0px;           /* flush — shaft and arrowhead read as one arrow */
-  pointer-events: none;
-  user-select: none;
-}
-
-
 /* ── 3. Hero Arrowhead — 36×40px, rotated 180° so tip points DOWN ─────── */
 .arrowhead-icon {
   width: 36px;
