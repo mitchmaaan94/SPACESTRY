@@ -391,7 +391,7 @@ p {
    The word "Scroll" is gone — visual language only.
    ──────────────────────────────────────────────────────────── */
 .header-scroll {
-  position: absolute;
+  position: relative;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
