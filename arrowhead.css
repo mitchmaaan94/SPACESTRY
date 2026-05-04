@@ -1,0 +1,127 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   arrowhead.css  —  Spacestry Arrow Icon System
+   Hero scroll indicator · Nav sm (24px fill) · Nav lg (64px outline)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 1. Shared Base & CSS Property Defaults ──────────────────────────── */
+.arrowhead-icon,
+.arrowhead-nav--sm,
+.arrowhead-nav--lg {
+  display: block;
+  flex-shrink: 0;
+  /* overridden per-variant below; safe fallback values */
+  --icon-fill:   url(#arrowMetalGrad);
+  --icon-stroke: #C8BC88;
+  --icon-sw:     1.5;
+}
+
+
+/* ── 2. Hero Scroll Indicator — Wrapper ──────────────────────────────── */
+/* Flex column so .header-scroll (shaft) sits above the arrowhead (tip). */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;           /* flush — shaft and arrowhead read as one arrow */
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ── 3. Hero Arrowhead — 36×40px, rotated 180° so tip points DOWN ─────── */
+.arrowhead-icon {
+  width: 36px;
+  height: 40px;
+  transform: rotate(180deg);
+  transform-origin: center;
+  /* fill + stroke supplied via inline --icon-* custom properties */
+}
+
+
+/* ── 4. Pulse Animation — activated by [data-pulse="true"] ──────────── */
+/*
+   The keyframe must bake the 180deg base rotation so scale
+   doesn't accidentally reset the orientation mid-animation.
+*/
+@keyframes arrowPulse {
+  0%,  100% {
+    transform: rotate(180deg) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+.arrowhead-icon[data-pulse="true"] {
+  animation: arrowPulse 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(200, 188, 136, 0.55));
+}
+
+
+/* ── 5. Nav Arrow — Small · 24px · fill-only ─────────────────────────── */
+/* Uses horizontal gradient (arrowMetalGradH) so sheen reads correctly    */
+/* after the 90° rotation.                                                */
+.arrowhead-nav--sm {
+  width: 24px;
+  height: auto;          /* preserves aspect ratio of 290:320 viewBox */
+  --icon-fill:   url(#arrowMetalGradH);
+  --icon-stroke: none;
+  --icon-sw:     0;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+/* Directional rotation — use these modifier classes on the element */
+.arrowhead-nav--sm.is-left  { transform: rotate(-90deg); }
+.arrowhead-nav--sm.is-right { transform: rotate(90deg);  }
+
+.arrowhead-nav--sm:hover {
+  filter: brightness(1.25) drop-shadow(0 0 4px rgba(200, 188, 136, 0.6));
+}
+
+.arrowhead-nav--sm:active {
+  filter: brightness(0.85);
+}
+
+/* WCAG 2.1 AA focus ring */
+.arrowhead-nav--sm:focus-visible {
+  filter: brightness(0.85);
+  outline: 1.5px solid #C8BC88;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+
+/* ── 6. Nav Arrow — Large Outline · 64px · stroke-only ──────────────── */
+/* Fill is none; stroke references horizontal gradient via CSS var.       */
+/* Default state is recessive (opacity 0.45); hover snaps it to full gold.*/
+.arrowhead-nav--lg {
+  width: 64px;
+  height: auto;
+  --icon-fill:   none;
+  --icon-stroke: url(#arrowMetalGradH);
+  --icon-sw:     1.8;
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* Directional rotation */
+.arrowhead-nav--lg.is-left  { transform: rotate(-90deg); }
+.arrowhead-nav--lg.is-right { transform: rotate(90deg);  }
+
+.arrowhead-nav--lg:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(200, 188, 136, 0.4));
+}
+
+/* WCAG 2.1 AA focus ring */
+.arrowhead-nav--lg:focus-visible {
+  opacity: 1;
+  outline: 2px solid #C8BC88;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
