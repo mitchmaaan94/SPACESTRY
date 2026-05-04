@@ -6,12 +6,40 @@
   <title>Spacestry — Interior Design Studio</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="arrowhead.css" />
   <link rel="icon" type="image/png" href="mono-logo.png">
   <meta name="theme-color" content="#1F4C3E">
   <meta name="description" content="Spacestry — Interior Design Studio. Crafting spaces in Ahmedabad and Delhi.">
 </head>
 <body>
 
+    <!-- ─── Shared SVG Gradient Defs ──────────────────────────────
+       Hidden zero-size block. Referenced globally by all arrowhead
+       variants via url(#arrowMetalGrad) / url(#arrowMetalGradH).
+  ─────────────────────────────────────────────────────────────── -->
+  <svg xmlns="http://www.w3.org/2000/svg"
+       aria-hidden="true" focusable="false"
+       style="position:absolute;width:0;height:0;overflow:hidden;">
+    <defs>
+
+      <!-- Vertical gradient — hero arrowhead (top-to-bottom sheen) -->
+      <linearGradient id="arrowMetalGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%"   stop-color="#e8dfa0"/><!-- highlight -->
+        <stop offset="50%"  stop-color="#C8BC88"/><!-- mid gold  -->
+        <stop offset="100%" stop-color="#8a7d52"/><!-- shadow    -->
+      </linearGradient>
+
+      <!-- Horizontal gradient — nav arrows (left-to-right sheen,
+           reads correctly after ±90° rotation) -->
+      <linearGradient id="arrowMetalGradH" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"   stop-color="#e8dfa0"/>
+        <stop offset="50%"  stop-color="#C8BC88"/>
+        <stop offset="100%" stop-color="#8a7d52"/>
+      </linearGradient>
+
+    </defs>
+  </svg>
+  
   <!-- ─── Page Veil ──────────────────────────────────────────── -->
   <div id="page-veil"></div>
 
