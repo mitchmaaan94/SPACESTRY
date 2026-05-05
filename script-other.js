@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Call it directly here since the loader never fires.
   if (typeof initReveal === 'function') initReveal();
 
-  // ── Nav: fixed, always visible ─────────────────────────────
-  // The nav already has class="nav-visible" in HTML (handled by CSS).
-  // initNavDots() is already called by script.js DOMContentLoaded.
-  // Nothing extra needed here.
+    // ── Nav: fixed, always visible ─────────────────────────────
+  // initNavDots() is defined in script.js. Call it here since
+  // initLoader() (which normally calls it) never runs on these pages.
+  if (typeof initNavDots === 'function') initNavDots();
 
 });
