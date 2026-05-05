@@ -228,7 +228,7 @@
   cursor: pointer;
   z-index: 2;
   /* Mirror arrowhead-nav--lg base (arrowhead.css not loaded on project pages) */
-  width: 64px;
+  width: 32px;
   height: auto;
   opacity: 0.45;
   transition: opacity 0.25s ease, filter 0.25s ease;
@@ -237,8 +237,8 @@
 /* Combine vertical centering WITH the directional rotation.
    These rules override arrowhead.css .is-left / .is-right which
    would otherwise wipe out the translateY. */
-.g-lb-prev { left: 14px;  transform: translateY(-50%) rotate(-90deg); }
-.g-lb-next { right: 14px; transform: translateY(-50%) rotate(90deg);  }
+.g-lb-prev { left: 28px;  transform: translateY(-50%) rotate(-90deg); }
+.g-lb-next { right: 28px; transform: translateY(-50%) rotate(90deg);  }
 
 .g-lb-prev:hover,
 .g-lb-next:hover {
@@ -306,7 +306,7 @@
   }
 
   .g-lb-stage  { padding: 56px 8px; }
-  .g-lb-prev { left: 4px;  transform: translateY(-50%) rotate(-90deg); }
-  .g-lb-next { right: 4px; transform: translateY(-50%) rotate(90deg);  }
+  .g-lb-prev { left: 8px;  transform: translateY(-50%) rotate(-90deg); }
+  .g-lb-next { right: 8px; transform: translateY(-50%) rotate(90deg);  }
   .g-lb-close  { top: 12px; right: 12px; }
 }
