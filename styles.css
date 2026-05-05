@@ -1008,7 +1008,7 @@ body { padding-top: 0; }
 /* QR + Map side-by-side row */
 .contact-qr-map-row {
   display: flex;
-  gap: 1.25rem;
+  gap: 5rem;
   justify-content: center;
   align-items: flex-start;
 }
