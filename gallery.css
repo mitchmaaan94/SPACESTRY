@@ -217,33 +217,33 @@
 }
 .g-lb-close:hover { color: var(--lb-bright); }
 
-/* ── Prev / Next ─────────────────────────────────────────── */
+/* ── Prev / Next (arrowhead-nav--lg) ────────────────────────── */
 .g-lb-prev,
 .g-lb-next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
-  padding: 14px 10px;
+  padding: 0;
   cursor: pointer;
-  color: var(--lb-muted);
   z-index: 2;
-  transition:
-    color     0.2s,
-    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Mirror arrowhead-nav--lg base (arrowhead.css not loaded on project pages) */
+  width: 64px;
+  height: auto;
+  opacity: 0.45;
+  transition: opacity 0.25s ease, filter 0.25s ease;
 }
 
-.g-lb-prev { left: 14px; }
-.g-lb-next { right: 14px; }
+/* Combine vertical centering WITH the directional rotation.
+   These rules override arrowhead.css .is-left / .is-right which
+   would otherwise wipe out the translateY. */
+.g-lb-prev { left: 14px;  transform: translateY(-50%) rotate(-90deg); }
+.g-lb-next { right: 14px; transform: translateY(-50%) rotate(90deg);  }
 
-.g-lb-prev:hover {
-  color: var(--lb-bright);
-  transform: translateY(-50%) translateX(-4px);
-}
+.g-lb-prev:hover,
 .g-lb-next:hover {
-  color: var(--lb-bright);
-  transform: translateY(-50%) translateX(4px);
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(200, 188, 136, 0.4));
 }
 
 /* ── Counter ─────────────────────────────────────────────── */
