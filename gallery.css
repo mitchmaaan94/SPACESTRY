@@ -306,7 +306,7 @@
   }
 
   .g-lb-stage  { padding: 56px 8px; }
-  .g-lb-prev   { left: 4px;  padding: 10px 6px; }
-  .g-lb-next   { right: 4px; padding: 10px 6px; }
+  .g-lb-prev { left: 4px;  transform: translateY(-50%) rotate(-90deg); }
+  .g-lb-next { right: 4px; transform: translateY(-50%) rotate(90deg);  }
   .g-lb-close  { top: 12px; right: 12px; }
 }
