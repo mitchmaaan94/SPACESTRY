@@ -1006,12 +1006,22 @@ body { padding-top: 0; }
 }
 
 /* ─── PROJECT GALLERY PAGES ─────────────────────────────────── */
-/* Header strip at top of each project page */
+/* Hero banner at top of each project page                        */
+/* background-image is set per-page via inline style on <header>  */
 .header.project-header {
-    padding: 32px 25px 24px; position: relative; z-index: 1;
-    min-height: unset; display: block; overflow: visible;
+    min-height: 65vh;
+    padding: clamp(60px, 8vw, 110px) 25px clamp(50px, 6vw, 80px);
+    position: relative;
+    z-index: 1;
+    /* display:flex, flex-direction, align-items, justify-content,
+       overflow:hidden, background-size/position — all inherited from .header */
 }
-.header.project-header .header-logo { max-width: 260px; padding-top: 0; margin-bottom: 8px; animation-delay: 0s; }
+.header.project-header .header-logo {
+    max-width: 260px;
+    padding-top: 0;
+    margin-bottom: 8px;
+    animation-delay: 0s;
+}
 .header.project-header .tagline { animation-delay: 0s; }
 
 /* main-wrapper for project gallery pages */
