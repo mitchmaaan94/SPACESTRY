@@ -598,7 +598,7 @@ p {
 }
 .secondary-nav-links a:hover::after,
 .secondary-nav-links a.active::after { right: 0; }
-.secondary-nav-links a.active { color: var(--color-green-dark); font-weight: 400; }
+.secondary-nav-links a.active { color: var(--color-green-dark); font-weight: 600; }
 
 @media (max-width: 768px) {
     .secondary-nav-inner { padding: 0 20px; }
