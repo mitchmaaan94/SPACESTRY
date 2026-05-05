@@ -1017,7 +1017,7 @@ body { padding-top: 0; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
   flex: 0 0 auto;
   width: clamp(90px, 11vw, 140px);
 }
