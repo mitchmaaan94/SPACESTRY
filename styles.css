@@ -1009,7 +1009,7 @@ body { padding-top: 0; }
 .contact-qr-map-row {
   display: flex;
   gap: 1.25rem;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 }
 
