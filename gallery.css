@@ -211,7 +211,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  color: var(--lb-muted);
+  color: #fff0a8;
   transition: color 0.2s;
   z-index: 2;
 }
@@ -284,6 +284,7 @@
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
+  z-index: 2;
 
  /* metal gradient on text */
   background: linear-gradient(
