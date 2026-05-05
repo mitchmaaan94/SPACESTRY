@@ -54,7 +54,10 @@
 
 /* ─── RESET ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; 
+      scrollbar-gutter: stable;   /* Firefox + all modern browsers */
+      overflow-y: overlay;        /* Chromium/WebKit: true overlay scrollbar */
+}
 body {
     font-family: var(--font-sans);
     font-weight: 300;
