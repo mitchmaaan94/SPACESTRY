@@ -1011,7 +1011,6 @@ body { padding-top: 0; }
   gap: 1.25rem;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
 }
 
 .contact-qr-item {
@@ -1023,19 +1022,23 @@ body { padding-top: 0; }
   width: clamp(90px, 11vw, 140px);
 }
 
-/* !important needed to override the existing .contact-qr-wrap img { height: auto } rule */
+/* Override the existing .contact-qr-wrap img { height: auto } */
 .contact-qr-item img {
   width: clamp(90px, 11vw, 140px) !important;
   height: clamp(90px, 11vw, 140px) !important;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
+  opacity: 0.8;
+  transition: opacity 0.3s;
 }
 
-.contact-qr-item iframe {
-  width: clamp(90px, 11vw, 140px);
-  height: clamp(90px, 11vw, 140px);
-  display: block;
-  border: 0;
+.contact-qr-item a:hover img {
+  opacity: 1;
+}
+
+.contact-qr-item img[src="spacestry-maps.png"] {
+  filter: invert(1);
+  border-radius: 10px;
 }
 
 /* ─── PROJECT GALLERY PAGES ─────────────────────────────────── */
