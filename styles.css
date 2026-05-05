@@ -65,7 +65,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-green);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 img { display: block; max-width: 100%; }
 a   { text-decoration: none; color: inherit; }
@@ -658,6 +658,7 @@ body { padding-top: 0; }
     display: flex;
     align-items: flex-start;          /* switcher aligns to top of first image */
     gap: clamp(12px, 1.5vw, 24px);   /* same-feel whitespace as outer margin */
+    margin-bottom: clamp(60px, 7vw, 100px);
 }
 
 /* Narrow typographic column — ~1/10 the content area */
@@ -665,6 +666,7 @@ body { padding-top: 0; }
     width: clamp(28px, 4vw, 48px);   /* ~1/10th of 5% padded 1600px container */
     flex-shrink: 0;
     display: flex;
+    align-self: flex-start;
     flex-direction: column;
     gap: 14px;
     padding-top: 4px;                 /* micro-nudge to optically align with first image top */
@@ -698,6 +700,7 @@ body { padding-top: 0; }
 .projects-layout .projects-grid {
     flex: 1;
     min-width: 0;
+    margin-bottom: 0;
 }
 
 /* ── View Switcher — icon upgrade (additive only) ──────────────── */
