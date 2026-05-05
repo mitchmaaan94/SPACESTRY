@@ -33,18 +33,16 @@
 */
 @keyframes arrowPulse {
   0%,  100% {
-    transform: rotate(180deg) scale(1);
     opacity: 1;
   }
   50% {
-    transform: rotate(180deg) scale(1.08);
-    opacity: 0.7;
+    opacity: 0.45;
   }
 }
 
 .arrowhead-icon[data-pulse="true"] {
-  animation: arrowPulse 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px rgba(200, 188, 136, 0.55));
+  animation: arrowPulse 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(200, 188, 136, 0.55));
 }
 
 
