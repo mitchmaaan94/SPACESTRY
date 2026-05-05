@@ -965,7 +965,7 @@ body { padding-top: 0; }
 .contact-qr-wrap { margin-top: auto; padding-top: 48px; }
 .contact-qr-wrap img { width: clamp(90px, 11vw, 140px); height: auto; opacity: 0.8; transition: opacity 0.3s; }
 .contact-qr-wrap a:hover img { opacity: 1; }
-.contact-qr-wrap small { display: block; margin-top: 8px; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(212,194,160,0.45); }
+.contact-qr-wrap small { display: block; margin-top: 8px; font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(212,194,160,0.45); text-align: center; }
 
 .contact-right { background: var(--color-bg); padding: clamp(56px, 8vw, 96px) clamp(36px, 6%, 80px); display: flex; flex-direction: column; justify-content: center; }
 .contact-right h2 { font-family: var(--font-serif); font-size: clamp(20px, 2.4vw, 30px); font-weight: 300; color: var(--color-green); margin-bottom: clamp(28px, 3vw, 44px); }
