@@ -107,7 +107,7 @@
   function open(index) {
     // Read project name from the .tagline element on the page
     lbTitle.textContent =
-      document.querySelector('.tagline')?.textContent?.split('|')[0]?.trim() ?? '';
+      document.querySelector('.hero-title')?.textContent?.trim() ?? '';
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     showImage(index);
