@@ -262,12 +262,8 @@
 
 /* ▼ metal gradient on text */
   background: linear-gradient(
-  to right,
-  #fff0a8 0%,    /* pale champagne highlight */
-  #E8C84A 25%,   /* bright gold */
-  #C8962A 55%,   /* deep warm gold */
-  #E8C84A 78%,   /* bright gold return */
-  #b8862a 100%   /* rich dark gold */
+  to right, #fff0a8 0%,    /* pale champagne highlight */
+  #D4AF37 100%
 );
   -webkit-background-clip: text;
           background-clip: text;
@@ -292,10 +288,7 @@
  /* metal gradient on text */
   background: linear-gradient(
   to right,  #fff0a8 0%,    /* pale champagne highlight */
-  #E8C84A 25%,   /* bright gold */
-  #C8962A 55%,   /* deep warm gold */
-  #E8C84A 78%,   /* bright gold return */
-  #b8862a 100%   /* rich dark gold */
+  #D4AF37 100%
 );
   -webkit-background-clip: text;
           background-clip: text;
