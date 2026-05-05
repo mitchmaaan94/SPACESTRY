@@ -586,7 +586,7 @@ p {
 }
 .secondary-nav-links a {
     position: relative;
-    font-family: var(--font-sans); font-size: 12.5px; font-weight: 500;
+    font-family: var(--font-sans); font-size: 12.5px; font-weight: 450;
     text-transform: uppercase; letter-spacing: 0.2em;
     color: var(--color-green); text-decoration: none; padding-bottom: 2px;
     transition: color var(--transition-med);
@@ -598,7 +598,7 @@ p {
 }
 .secondary-nav-links a:hover::after,
 .secondary-nav-links a.active::after { right: 0; }
-.secondary-nav-links a.active { color: var(--color-green-dark); font-weight: 600; }
+.secondary-nav-links a.active { color: var(--color-green-dark); font-weight: 550; }
 
 @media (max-width: 768px) {
     .secondary-nav-inner { padding: 0 20px; }
