@@ -230,7 +230,7 @@
   /* Mirror arrowhead-nav--lg base (arrowhead.css not loaded on project pages) */
   width: 32px;
   height: auto;
-  opacity: 0.45;
+  opacity: 0.65;
   transition: opacity 0.25s ease, filter 0.25s ease;
 }
 
