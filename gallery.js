@@ -49,7 +49,7 @@
     <button class="arrowhead-nav--lg is-left g-lb-prev" aria-label="Previous">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 320"
            aria-hidden="true" focusable="false"
-           style="--icon-fill:none;--icon-stroke:url(#arrowMetalGradH);--icon-sw:1.8;">
+           style="--icon-fill:url(#arrowMetalGradH);--icon-stroke:none;--icon-sw:1.8;">
         <path fill-rule="evenodd"
           d="M 0.794,168.728 c 0,0 -1.723,79.759 72.813,125.882 0,0 27.648,20.735 67.193,23.647 0,0 29.154,-1.21 46.497,-23.947 l 101.244,-112.85 -147.168,-180.335 c -140.81,119.512 -134.877,132.101 -140.579,167.603 z m 138.844,-153.101 l 136.86,164.666 -71.523,81.16 c 0,0 -31.545,5.859 -76.908,-18.631 -60.172,-32.485 -75.2,-69.291 -75.2,-69.291 -23.109,-52.602 5.087,-85.762 5.087,-85.762 z"
           fill="var(--icon-fill, none)"
