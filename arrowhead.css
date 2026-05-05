@@ -18,8 +18,8 @@
 
 /* ── 3. Hero Arrowhead — 36×40px, rotated 180° so tip points DOWN ─────── */
 .arrowhead-icon {
-  width: 36px;
-  height: 40px;
+  width: 12px;
+  height: 14px;
   transform: rotate(180deg);
   transform-origin: center;
   /* fill + stroke supplied via inline --icon-* custom properties */
