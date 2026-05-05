@@ -237,8 +237,8 @@
 /* Combine vertical centering WITH the directional rotation.
    These rules override arrowhead.css .is-left / .is-right which
    would otherwise wipe out the translateY. */
-.g-lb-prev { left: 36px;  transform: translateY(-50%) rotate(-90deg); }
-.g-lb-next { right: 36px; transform: translateY(-50%) rotate(90deg);  }
+.g-lb-prev { left: 48px;  transform: translateY(-50%) rotate(-90deg); }
+.g-lb-next { right: 48px; transform: translateY(-50%) rotate(90deg);  }
 
 .g-lb-prev:hover,
 .g-lb-next:hover {
