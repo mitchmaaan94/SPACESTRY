@@ -257,10 +257,15 @@
   font-weight: 300;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--lb-muted);
   white-space: nowrap;
   pointer-events: none;
 }
+/* ▼ metal gradient on text */
+  background: linear-gradient(to right, #e8dfa0 0%, #C8BC88 50%, #8a7d52 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
 
 /* ── Project title (top-centre in lightbox) ──────────────── */
 .g-lb-title {
@@ -273,11 +278,16 @@
   font-weight: 300;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: var(--lb-bright);
   white-space: nowrap;
   pointer-events: none;
 }
-
+ /* metal gradient on text */
+  background: linear-gradient(to right, #e8dfa0 0%, #C8BC88 50%, #8a7d52 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent; /* fallback */
+}
 
 /* ═══════════════════════════════════════════════════════════
    3 · RESPONSIVE
