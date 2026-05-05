@@ -1094,6 +1094,38 @@ body { padding-top: 0; }
 /* main-wrapper for project gallery pages */
 .main-wrapper { max-width: 1600px; margin: 0 auto; padding: 0 5%; }
 
+/*Contact.html QR + Map side-by-side row */
+.contact-qr-map-row {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-qr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.contact-qr-item img {
+  width: 100%;
+  max-width: 160px;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+}
+
+.contact-qr-item iframe {
+  width: 100%;
+  max-width: 160px;
+  height: 160px;
+  border: 0;
+  display: block;
+}
+
 /* ─── LEGACY WINDOW FRAME (not used on homepage anymore) ────── */
 .window-frame { display: block; position: relative; width: 100%; height: 100vh; min-height: 420px; overflow: hidden; text-decoration: none; isolation: isolate; }
 .window-bg    { width: 100%; height: 130%; object-fit: cover; display: block; will-change: transform; transition: transform var(--transition-slow); }
