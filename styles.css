@@ -1030,6 +1030,7 @@ body { padding-top: 0; }
   display: block;
   opacity: 0.8;
   transition: opacity 0.3s;
+  border-radius: 10px;
 }
 
 .contact-qr-item a:hover img {
@@ -1038,7 +1039,6 @@ body { padding-top: 0; }
 
 .contact-qr-item img[src="spacestry-maps.png"] {
   filter: invert(1);
-  border-radius: 10px;
 }
 
 /* ─── PROJECT GALLERY PAGES ─────────────────────────────────── */
