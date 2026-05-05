@@ -1047,6 +1047,7 @@ body { padding-top: 0; }
   font-family: var(--font-serif);
   font-size: 2.15rem;
   font-weight: 400;
+  text-align: left;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 12px 0;
