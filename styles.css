@@ -1013,8 +1013,9 @@ body { padding-top: 0; }
     padding: clamp(60px, 8vw, 110px) 25px clamp(50px, 6vw, 80px);
     position: relative;
     z-index: 1;
+    background-position: center center;
     /* display:flex, flex-direction, align-items, justify-content,
-       overflow:hidden, background-size/position — all inherited from .header */
+       overflow:hidden, background position — center; */
 }
 .header.project-header .header-logo {
     max-width: 260px;
